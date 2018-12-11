@@ -1,0 +1,124 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+.session-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top right, rgba(255,82,99,0.9) 10%, rgba(255,115,129,0.9) 65%, rgba(252,189,1,0.9) 125%);
+  background-image: linear-gradient(to right top, rgba(255, 82, 99, 0.9) 10%, rgba(255, 115, 129, 0.9) 65%, rgba(252, 189, 1, 0.9) 125%);
+  height: 100vh;
+ }
+
+.session-form-header {
+  color: #151b26;
+  font-size: 32px;
+  padding: 20px 20px 20px 20px;
+  margin: 0 auto;
+}
+
+.logo-session {
+  height: 24px;
+}
+
+.errors-session {
+  background-color: #ffedef;
+  border-radius: 4px;
+  color: #222b37;
+  line-height: 1.25;
+  padding: 15px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: white;
+  border-radius: 5px;
+  width: 585px;
+  height: 550px;
+}
+
+.session-inner-form {
+  padding: 0 70px 0 70px
+}
+
+.session-form-input {
+  background-color: rgb(250, 255, 189);
+  border: 1px solid #d5dce0;
+  padding-left: 10px;
+  margin: 7px 0 7px 0;
+  height: 42px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.session-form-label {
+  color: #848f99;
+  font-size: 14px;
+  height: 18px;
+  padding-bottom: 7px;
+  width: 100%;
+}
+
+.blue-button {
+  background-color: #14aaf5;
+  color: white;
+  height: 38px;
+  padding: 15px;
+  margin: 0 auto;
+  border-radius: 4px;
+  border: 1px solid #14aaf5;
+  line-height: 0px;
+}
+
+.session-form-button-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.session-form-button-section span {
+   color: #848f99;
+}
+
+.transparent-button {
+  background-color: transparent;
+  color: white;
+  height: 38px;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 4px;
+  border: 1px solid white;
+  line-height: 0px;
+  margin: 15px;
+}
+
+#session-alternate-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+}
+

@@ -54,7 +54,7 @@
   background-color: white;
   border-radius: 5px;
   width: 585px;
-  height: 550px;
+  min-height: 500px;
 }
 
 .session-inner-form {

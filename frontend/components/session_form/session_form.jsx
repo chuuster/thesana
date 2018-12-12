@@ -46,7 +46,7 @@ class SessionForm extends React.Component {
         <div id="session-alternate-link">
           <span>Don't have an account?  </span> 
           <Link to="/signup"> 
-            <button className="transparent-button"> Sign Up</button>
+            <button className="transparent-button" onClick={this.props.clearErrors}> Sign Up</button>
           </Link>
         </div>
       );
@@ -55,7 +55,7 @@ class SessionForm extends React.Component {
         <div id="session-alternate-link">
           <span>Have an account?  </span> 
           <Link to="/login">
-            <button className="transparent-button"> Log In</button>
+            <button className="transparent-button" onClick={this.props.clearErrors}> Log In</button>
           </Link>
         </div>
       );

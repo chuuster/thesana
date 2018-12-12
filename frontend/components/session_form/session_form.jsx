@@ -87,7 +87,7 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="session-container">
-        <Link to="/"><img src="./assets/logo_white.png" className="logo-session"></img></Link><br /><br />
+        <Link to="/"><img src={window.whitelogoURL} className="logo-session" /></Link><br /><br />
         <form onSubmit={this.handleSubmit} className="session-form">
           <h1 className="session-form-header">{this.props.formType}</h1>
           

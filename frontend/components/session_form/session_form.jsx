@@ -7,7 +7,8 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      loading: true
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoUserLogin = this.demoUserLogin.bind(this);
@@ -22,6 +23,10 @@ class SessionForm extends React.Component {
     return (e) => {
       this.setState({[field]: e.target.value});
     };
+  }
+
+  componentDidMount() {
+    this.setState({loading: false})
   }
 
   renderErrors() {
@@ -80,12 +85,20 @@ class SessionForm extends React.Component {
     }
   }
 
-  demoUserLogin() {
+  demoUserLogin(e) {
+    e.preventDefault()
     this.props.processForm({email: "mscott@example.com", password: "password"})
   }
 
+  // componentDidUpdate() {
+  //   if this.props.
+  // }
+
   render() {
-    return (
+    if (this.state.loading) {
+      return (<h1> I"M LOADING"</h1>);
+    } else {
+      return (
       <div className="session-container">
         <Link to="/"><img src={window.whitelogoURL} className="logo-session" /></Link><br /><br />
         <form onSubmit={this.handleSubmit} className="session-form">
@@ -115,8 +128,9 @@ class SessionForm extends React.Component {
 
         {this.renderOtherLink()}
       </div>
-    )
-  }
-}
+      );
+    }
+  };
+};
 
 export default SessionForm;

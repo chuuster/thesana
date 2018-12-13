@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import { logout } from '../../actions/session_actions';
+import { logout } from '../../../../actions/session_actions';
+import TopBarIndex from "./top_bar_index";
 
 const mapStateToProps = (state) => {
   return {
@@ -13,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Greeting)
+export default connect(mapStateToProps, mapDispatchToProps)(TopBarIndex)

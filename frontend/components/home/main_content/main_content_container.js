@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import { logout } from '../../actions/session_actions';
-import Main from "./main";
+import { logout } from '../../../actions/session_actions';
+import MainContent from "./main_content"
 
 const mapStateToProps = (state) => {
   return {
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+export default connect(mapStateToProps, mapDispatchToProps)(MainContent)

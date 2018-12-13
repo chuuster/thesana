@@ -30,9 +30,16 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
+    let sessionClass;
+    if (this.props.formType === "Log In") {
+      sessionClass = "errors-session-login";
+    } else {
+      sessionClass = "errors-session-signup";
+    }
+    
     if (this.props.errors.length !== 0) {
       return ( 
-        <div className="errors-session">
+        <div className={sessionClass}>
           <ul>
             {this.props.errors.map((error, i) => (
               <li key={`error-${i}`}>
@@ -90,47 +97,39 @@ class SessionForm extends React.Component {
     this.props.processForm({email: "mscott@example.com", password: "password"})
   }
 
-  // componentDidUpdate() {
-  //   if this.props.
-  // }
-
   render() {
-    if (this.state.loading) {
-      return (<h1> I"M LOADING"</h1>);
-    } else {
-      return (
-      <div className="session-container">
-        <Link to="/"><img src={window.whiteLogoURL} className="logo-session" /></Link><br /><br />
-        <form onSubmit={this.handleSubmit} className="session-form">
-          <h1 className="session-form-header">{this.props.formType}</h1>
+    return (
+    <div className="session-container">
+      <Link to="/"><img src={window.whiteLogoURL} className="logo-session" /></Link><br /><br />
+      <form onSubmit={this.handleSubmit} className="session-form">
+        <h1 className="session-form-header">{this.props.formType}</h1>
+        
+        <div className="session-inner-form">
+          {this.renderErrors()}
+          <label className="session-form-label">Email Address:</label> <br/>
+          <input 
+            type="text" 
+            value={this.state.email} 
+            onChange={this.handleChange("email")} 
+            className="session-form-input"
+          /><br /><br />
+          <label className="session-form-label">Password:</label> <br />
+          <input 
+            type="password" 
+            value={this.state.password} 
+            onChange={this.handleChange("password")} 
+            className="session-form-input" 
+          /><br /><br /><br />
           
-          <div className="session-inner-form">
-            {this.renderErrors()}
-            <label className="session-form-label">Email Address:</label> <br/>
-            <input 
-              type="text" 
-              value={this.state.email} 
-              onChange={this.handleChange("email")} 
-              className="session-form-input"
-            /><br /><br />
-            <label className="session-form-label">Password:</label> <br />
-            <input 
-              type="password" 
-              value={this.state.password} 
-              onChange={this.handleChange("password")} 
-              className="session-form-input" 
-            /><br /><br /><br />
-            
-            {this.renderSubmitButton()}
-          </div>
+          {this.renderSubmitButton()}
+        </div>
 
-        </form>
+      </form>
 
-        {this.renderOtherLink()}
-      </div>
-      );
-    }
-  };
+      {this.renderOtherLink()}
+    </div>
+    );
+  }
 };
 
 export default SessionForm;

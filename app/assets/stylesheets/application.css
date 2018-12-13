@@ -24,3 +24,11 @@ html, body {
 button:hover {
   cursor: pointer;
 }
+
+.home-container {
+  display: flex;
+}
+
+.main-content-container {
+  width: 100%;
+};

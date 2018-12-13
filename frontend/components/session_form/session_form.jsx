@@ -100,7 +100,7 @@ class SessionForm extends React.Component {
     } else {
       return (
       <div className="session-container">
-        <Link to="/"><img src={window.whitelogoURL} className="logo-session" /></Link><br /><br />
+        <Link to="/"><img src={window.whiteLogoURL} className="logo-session" /></Link><br /><br />
         <form onSubmit={this.handleSubmit} className="session-form">
           <h1 className="session-form-header">{this.props.formType}</h1>
           

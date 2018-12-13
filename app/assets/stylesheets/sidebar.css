@@ -1,0 +1,53 @@
+.side-bar-container {
+  width: 244px;
+  height: 100vh;
+  background-color: #151b26;
+  color: white;
+};
+
+.side-bar-container header {
+  width: 100%;
+}
+
+#logo-home {
+  height: 16px;
+  padding: 20px 0px 20px 15px;
+}
+
+.side-links-section {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #222b37;
+}
+
+.side-bar-link-container {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 10px 0 15px;
+}
+
+.side-bar-link-container:hover {
+  background: rgba(255,255,255,0.08);
+  cursor: pointer;
+}
+
+/* a:link - a normal, unvisited link
+a:visited - a link the user has visited
+a:hover - a link when the user mouses over it
+a:active */
+
+.side-bar-icon {
+  height: 20px;
+  margin-right: 10px;
+}
+
+.side-bar-link-text {
+  color: #D4DBDF;
+  font-size: 14px;
+}
+
+/* 
+icon color hover: D4DBDF
+icon color: 646F78 */

@@ -16,10 +16,23 @@ class User < ApplicationRecord
   validates :email, :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password, length: {minimum: 8, allow_nil: true}
-
   before_validation :ensure_session_token!
-  
+
   attr_reader :password
+  
+  has_many :team_memberships, 
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :TeamMembership
+
+  has_many :teams, 
+    through: :team_memberships,
+    source: :team
+
+  has_many :projects,
+    through: :teams,
+    source: :projects
+  
   
   def ensure_session_token!
     self.session_token ||= SecureRandom.urlsafe_base64

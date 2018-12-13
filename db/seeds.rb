@@ -18,9 +18,10 @@ User.create!(email: "pgem@example.com", fname: "Pearl", lname: "Gem", password: 
 
 Team.create!(name: "Team Awesome", description: "An awesome team")
 TeamMembership.create!(team_id: Team.find_by(name: "Team Awesome").id, user_id: User.find_by(email: "mscott@example.com").id)
-TeamMembership.create!(team_id: Team.find_by(name: "Team Awesome").id, user_id: User.find_by(email: "phalpert@example.com").id)
-TeamMembership.create!(team_id: Team.find_by(name: "Team Awesome").id, user_id: User.find_by(email: "jvaljean@example.com").id)
 TeamMembership.create!(team_id: Team.find_by(name: "Team Awesome").id, user_id: User.find_by(email: "icmorimoto@example.com").id)
 TeamMembership.create!(team_id: Team.find_by(name: "Team Awesome").id, user_id: User.find_by(email: "dprince@example.com").id)
 TeamMembership.create!(team_id: Team.find_by(name: "Team Awesome").id, user_id: User.find_by(email: "suniverse@example.com").id)
-TeamMembership.create!(team_id: Team.find_by(name: "Team Awesome").id, user_id: User.find_by(email: "pgem@example.com").id)
+
+Project.create!(name: "Potluck time!", description: "A nice dinner party with friends", team_id: Team.find_by(name: "Team Awesome").id)
+Project.create!(name: "Prep kit for emergencies", team_id: Team.find_by(name: "Team Awesome").id)
+Project.create!(name: "Mom's bday", team_id: Team.find_by(name: "Team Awesome").id)

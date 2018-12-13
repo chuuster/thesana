@@ -1,0 +1,111 @@
+.splash-top-bar-container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #D4DBDF;
+  margin-bottom: 70px;
+}
+
+#logo-splash {
+  height: 24px;
+}
+
+.splash-top-bar-links-section {
+  display: flex;
+  color: #646f79;
+}
+
+.splash-top-bar-link-container {
+  padding: 5px;
+  margin: 0px 15px 0px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.splash-top-bar-link-text:hover {
+  color: #635ac7;
+  cursor: pointer;
+}
+
+.splash-main-container {
+  width: 65%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.splash-main-container h1 {
+  font-size: 56px;
+  color: #151b26;
+  margin-bottom: 20px;
+  line-height: 125%;
+}
+
+.splash-main-container h2 {
+  font-size: 28px;
+  color: #777C80;
+  line-height: 125%;
+  margin: 30px 0 30px 0;
+}
+
+.splash-try-button {
+  background-color: white;
+  padding: 10px 20px 10px 20px;
+  border-radius: 4px;
+  border: 2px solid #796eff;
+  color: #796eff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 15px;
+}
+
+.splash-try-button:hover {
+  background-color: #796eff;
+  color: white;
+}
+
+.splash-email-input {
+  padding: 15px 10px 15px 10px;
+  width: 50%;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  /* border-radius: 4px;
+  box-shadow: none; */
+}
+
+.splash-email-input:focus {
+  outline:none; 
+  border:1px solid #796eff;
+  -webkit-box-shadow: 0px 0px 5px  #796eff;
+  box-shadow: 0px 0px 5px  #796eff;
+ }
+
+#splash-get-started-button {
+  width: 15%;
+  padding:15px 0px 15px 0px;
+  background-color: #796eff;
+  border-radius: 4px;
+  border: 1px solid #796eff;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 30px;
+}
+
+ #splash-get-started-button:hover {
+  background-color: #635ac7;
+}
+
+.splash-get-started-button:active, .splash-get-started-button:focus {
+  border:1px solid #796eff;
+  -webkit-box-shadow: 0px 0px 5px  #796eff;
+  box-shadow: 0px 0px 5px  #796eff;
+ }
+
+#splash-email-form {
+  margin-top: 20px;
+}

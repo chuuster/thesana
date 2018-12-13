@@ -1,4 +1,9 @@
 class Api::TeamsController < ApplicationController
+  def index 
+    @teams = current_user.projects
+    render json: "teamssssss"
+  end 
+  
   def create 
     @team = Team.new(team_params)
     if @team.save 

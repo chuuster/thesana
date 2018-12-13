@@ -6,6 +6,11 @@ class Team < ApplicationRecord
     foreign_key: :team_id,
     class_name: :TeamMembership
 
+  has_many :projects,
+    primary_key: :id,
+    foreign_key: :team_id,
+    class_name: :Project
+
   has_many :members,
     through: :team_memberships,
     source: :member

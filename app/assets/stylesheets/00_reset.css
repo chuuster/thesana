@@ -42,3 +42,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+a, a:hover, a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	background: none;
+	box-shadow: 0;
+	outline: none;
+}

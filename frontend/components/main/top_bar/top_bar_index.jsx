@@ -9,7 +9,7 @@ class TopBarIndex extends React.Component {
     return (
       <div className="top-bar-container"> 
         <ul>
-          <li>Hi! You are logged in.</li>
+          <li>Hi! You are logged in. Top</li>
           <li><button onClick={this.props.logout}>Log Out</button></li>
         </ul>
       </div>

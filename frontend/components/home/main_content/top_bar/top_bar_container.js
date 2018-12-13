@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { logout } from '../../../../actions/session_actions';
 import TopBarIndex from "./top_bar_index";
 
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopBarIndex)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopBarIndex));

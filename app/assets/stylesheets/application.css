@@ -32,3 +32,58 @@ button:hover {
 .main-content-container {
   width: 100%;
 };
+
+
+/* teal #3be8b0
+blue #1aafd0
+purple #6a67ce
+orange #ffb900
+red #fc636b
+project-blue #5581DE
+user-pink #DF58E3 */
+/* 
+.ChipWithIcon {
+    height: 40px;
+    width: 40px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px -2px inset;
+    align-items: center;
+    display: flex;
+    fill: rgb(255, 255, 255);
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgb(183, 191, 198);
+    flex: 0 0 auto;
+}
+40x40 big 
+.ChipWithIcon--withChipFill.ChipWithIcon--colorBlue {
+    background-color: rgb(65, 134, 224);
+} */
+/* 
+<style>…</style>
+.Avatar--color2 {
+    background-color: rgb(227, 98, 227);
+    color: rgb(255, 255, 255);
+}
+<style>…</style>
+.Avatar--small {
+    font-size: 11px;
+    height: 24px;
+    line-height: 24px;
+    min-width: 24px;
+    width: 24px;
+}
+<style>…</style>
+.Avatar {
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px inset;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    -webkit-print-color-adjust: exact;
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    vertical-align: top;
+    background: center center / cover rgb(213, 220, 224);
+    border-radius: 50%;
+} */

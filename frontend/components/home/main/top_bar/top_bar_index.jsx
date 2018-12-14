@@ -1,25 +1,22 @@
 import React from 'react'; 
-import { Route } from 'react-router-dom';
-import { userInitials } from '../../../../../app/assets/javascripts/application';
-
+import { Route, Switch } from 'react-router-dom';
 
 class TopBarIndex extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  // userInitials() {
-  //   const currentUser = this.props.currentUser;
-  //   let initials = ""; 
-  //   if ((!currentUser.fname) || (!currentUser.lname)) {
-  //     initials = "ME" 
-  //   } else {
-  //     initials += currentUser.fname[0].toUpperCase();
-  //     initials += currentUser.lname[0].toUpperCase(); 
-  //   }
+  //////////    Click Handlers   ////////// 
 
-  //   return initials;
-  // }
+  handleUserIconClick() {
+    document.getElementById("userDropdown").classList.toggle("show");
+  }
+
+  handleNewButtonClick() {
+    document.getElementById("newDropdown").classList.toggle("show");
+  }
+
+  //////////   Dropdown Sections //////////  
 
   newButtonDropdown() {
     return (
@@ -40,10 +37,6 @@ class TopBarIndex extends React.Component {
     );
   }
 
-  handleUserIconClick() {
-    document.getElementById("userDropdown").classList.toggle("show");
-  }
-
   userIconDropdown() {
     return (
       <div id="userDropdown" className="dropdown-content-user">
@@ -56,10 +49,20 @@ class TopBarIndex extends React.Component {
     );
   }
 
-  handleNewButtonClick() {
-    document.getElementById("newDropdown").classList.toggle("show");
+  //////////    Sub-Components   //////////  
+  
+  renderTopBarLeft() {
+    return (
+      <div className="top-bar-left">
+        <div className="top-bar-left-index">
+          <Switch>
+            <Route exact path="/home" render={() => (<span>Home</span>)} />
+            <Route exact path="/projects/:projectId" render={this.renderProjectView} />
+          </Switch>
+        </div>
+      </div>
+    );
   }
-
 
   renderProjectView() {
     return (
@@ -84,16 +87,7 @@ class TopBarIndex extends React.Component {
     );
   }
 
-  renderTopBarLeft() {
-    return (
-      <div className="top-bar-left">
-        <div className="top-bar-left-index"> 
-          <Route exact path="/home" render={() => (<span>Home</span>)}/>
-          <Route path="/project/:projectId" render={this.renderProjectView}/>
-        </div>
-      </div>
-    );
-  }
+  //////////      Main Render          ////////// 
 
   render() {
     return (
@@ -115,7 +109,6 @@ class TopBarIndex extends React.Component {
             {this.userIconDropdown()}
           </div>
           
-          {/* <button className="top-bar-gradient-button"onClick={this.props.logout}>Log Out</button> */}
         </div>
       </div>
     ) 

@@ -63,9 +63,50 @@ a:active */
   color: #d5dce0;
 }
 
-.side-bar-report-link:hover {
+.side-bar-report-link:hover, .project-index-item:hover {
   cursor: pointer;
   background: rgba(255,255,255,0.08);
+}
+
+.side-team-index {
+  padding: 10px 15px 10px 15px;
+  font-size: 14px;
+}
+
+.team-index-item span {
+  display: block;
+  min-height: 28px;
+}
+
+.member-index .user-circle-button {
+  margin-right: 5px;
+}
+
+.project-index {
+  margin-top: 10px;
+}
+
+.project-index-item {
+  color: #d5dce0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 28px;
+}
+
+.project-index-item span {
+    color: #d5dce0;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.mini-chip-icon {
+  height: 8px;
+  width: 8px;
+  background:#6a67ce;
+  border-radius: 2px;
 }
 
 

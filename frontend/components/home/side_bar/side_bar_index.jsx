@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 class SideBarIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
   }
 
   sideBarStaticRender() {
@@ -13,10 +14,10 @@ class SideBarIndex extends React.Component {
           <Link to="/"><img src={window.greenLogoURL} id="logo-home" /></Link>
         </div>
         <section className="side-links-section">
-          <div className="side-bar-link-container">
+          <Link to="/home" className="side-bar-link-container">
             <img src={window.homeIconURL} className="side-bar-icon" />
             <span className="side-bar-link-text">Home</span>
-          </div>
+          </Link>
           <div className="side-bar-link-container">
             <img src={window.myTasksIconURL} className="side-bar-icon" />
             <span className="side-bar-link-text">My Tasks</span>
@@ -51,13 +52,21 @@ class SideBarIndex extends React.Component {
             <span>Team Awesome</span>
             
             <div className="member-index">
-              {/* circle buttons? */}
               <button className="user-circle-button">CC</button>
+              <button className="user-circle-button">PD</button>
+              <button className="user-circle-button">MS</button>
+              <button className="user-circle-button">JP</button>
             </div>
 
             <div className="project-index">
-              <div className="project-index-item">
-              </div>
+              <Link to="/projects/1" className="project-index-item">
+                <div className="mini-chip-icon"></div>
+                <span>Project Title 1</span>
+              </Link>
+              <Link to="/projects/2" className="project-index-item">
+                <div className="mini-chip-icon"></div>
+                <span>Project Title 2</span>
+              </Link>
             </div>
 
           </div>

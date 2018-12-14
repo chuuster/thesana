@@ -1,13 +1,13 @@
 import React from 'react';
-import MainContentContainer from "./main_content/main_content_container";
+import MainDisplayContainer from "./main/main_display_container";
 import SideBarContainer from "./side_bar/side_bar_container";
 // import { ProtectedRoute } from "../util/route_util";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <div className="home-container">
       <SideBarContainer />
-      <MainContentContainer />
+      <MainDisplayContainer />
     </div>
   );
 };

@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-right: 20px;
 }
 
 .top-bar-right {
@@ -68,7 +69,6 @@
   line-height: 24px;
   color: white;
   border-radius: 50%;
-  margin-right: 20px;
 }
 
 .user-circle-button:hover, .user-circle-button:focus {

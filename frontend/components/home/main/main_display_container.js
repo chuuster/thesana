@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import { logout } from '../../../actions/session_actions';
-import MainContent from "./main_content"
+import { withRouter } from 'react-router-dom';
+import MainDisplay from "./main_display";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id]
   };
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContent)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainDisplay));

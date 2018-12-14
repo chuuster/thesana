@@ -1,6 +1,6 @@
 import React from 'react';
 import TopBarContainer from './top_bar/top_bar_container';
-import MainContentContainer from "./main/main_content_container";
+import MainContentContainer from "./main_content/main_content_container";
 
 class MainDisplay extends React.Component {
   constructor(props) {

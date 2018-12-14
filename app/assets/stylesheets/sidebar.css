@@ -86,7 +86,7 @@ a:active */
   margin-top: 10px;
 }
 
-.project-index-item {
+.side-project-index-item {
   color: #d5dce0;
   display: flex;
   flex-direction: row;
@@ -95,7 +95,7 @@ a:active */
   min-height: 28px;
 }
 
-.project-index-item span {
+.side-project-index-item span {
     color: #d5dce0;
   margin-left: 15px;
   display: flex;

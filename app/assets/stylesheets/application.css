@@ -31,6 +31,8 @@ button:hover {
 
 .main-display-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 };
 
 

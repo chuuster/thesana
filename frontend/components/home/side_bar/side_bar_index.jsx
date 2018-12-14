@@ -59,11 +59,11 @@ class SideBarIndex extends React.Component {
             </div>
 
             <div className="project-index">
-              <Link to="/projects/1" className="project-index-item">
+              <Link to="/projects/1" className="side-project-index-item">
                 <div className="mini-chip-icon"></div>
                 <span>Project Title 1</span>
               </Link>
-              <Link to="/projects/2" className="project-index-item">
+              <Link to="/projects/2" className="side-project-index-item">
                 <div className="mini-chip-icon"></div>
                 <span>Project Title 2</span>
               </Link>

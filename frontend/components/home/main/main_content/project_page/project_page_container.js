@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
-import MainDisplay from "./main_display";
+import ProjectPage from "./project_page";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -8,5 +8,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-
-export default withRouter(connect(mapStateToProps)(MainDisplay));
+export default withRouter(connect(mapStateToProps)(ProjectPage));

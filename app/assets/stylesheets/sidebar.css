@@ -1,5 +1,5 @@
 .side-bar-container {
-  width: 244px;
+  min-width: 244px;
   height: 100vh;
   background-color: #151b26;
   color: white;

@@ -28,7 +28,7 @@ window.onclick = function (event) {
     }
   }
 
-  if (!event.target.matches('.current-user-circle-button')) {
+  if (!event.target.matches('.user-circle-button')) {
     const dropdowns = document.getElementsByClassName("dropdown-content-user");
     let i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -39,3 +39,4 @@ window.onclick = function (event) {
     }
   }
 };
+

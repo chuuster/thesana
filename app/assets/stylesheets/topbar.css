@@ -56,7 +56,7 @@
   background: linear-gradient(to top right, #ff1f35, #ff4053 35%, #c99701);
 }
 
-.current-user-circle-button {
+.user-circle-button {
   display: inline-flex;
   justify-content: center;
   position: relative;
@@ -71,7 +71,7 @@
   margin-right: 20px;
 }
 
-.current-user-circle-button:hover, .current-user-circle-button:focus {
+.user-circle-button:hover, .user-circle-button:focus {
   background: #C74FCC;
 }
 
@@ -164,7 +164,7 @@
 }
 
 .top-bar-project-interaction {
-  margin: 10px 0 10px 0;
+  margin: 10px 0 8px 0;
 }
 
 .top-bar-nav {

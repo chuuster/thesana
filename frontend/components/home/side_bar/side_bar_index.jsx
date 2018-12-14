@@ -44,7 +44,23 @@ class SideBarIndex extends React.Component {
     return (
       <div className="side-bar-container">
         {this.sideBarStaticRender()}
+
         <div className="side-team-index">
+          
+          <div className="team-index-item">
+            <span>Team Awesome</span>
+            
+            <div className="member-index">
+              {/* circle buttons? */}
+              <button className="user-circle-button">CC</button>
+            </div>
+
+            <div className="project-index">
+              <div className="project-index-item">
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     )

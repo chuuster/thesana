@@ -5,6 +5,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 const receiveCurrentUser = (currentUser) => {
+  console.log(currentUser)
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser: currentUser

@@ -1,25 +1,25 @@
 import React from 'react'; 
 import { Route } from 'react-router-dom';
+import { userInitials } from '../../../../../app/assets/javascripts/application';
 
 
 class TopBarIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.userInitials = this.userInitials.bind(this)
   }
 
-  userInitials() {
-    const currentUser = this.props.currentUser;
-    let initials = ""; 
-    if ((!currentUser.fname) || (!currentUser.lname)) {
-      initials = "ME" 
-    } else {
-      initials += currentUser.fname[0].toUpperCase();
-      initials += currentUser.lname[0].toUpperCase(); 
-    }
+  // userInitials() {
+  //   const currentUser = this.props.currentUser;
+  //   let initials = ""; 
+  //   if ((!currentUser.fname) || (!currentUser.lname)) {
+  //     initials = "ME" 
+  //   } else {
+  //     initials += currentUser.fname[0].toUpperCase();
+  //     initials += currentUser.lname[0].toUpperCase(); 
+  //   }
 
-    return initials;
-  }
+  //   return initials;
+  // }
 
   newButtonDropdown() {
     return (
@@ -111,7 +111,7 @@ class TopBarIndex extends React.Component {
           <button className="top-bar-upgrade-button">Upgrade</button>
           
           <div className="dropdown">
-            <button onClick={this.handleUserIconClick} className="current-user-circle-button">{this.userInitials()}</button>
+            <button onClick={this.handleUserIconClick} className="user-circle-button">{this.props.currentUser.initials}</button>
             {this.userIconDropdown()}
           </div>
           

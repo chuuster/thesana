@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { logout } from '../../../../actions/session_actions';
+// import { userInitials } from '../../../../../app/assets/javascripts/application';
 import TopBarIndex from "./top_bar_index";
 
 const mapStateToProps = (state) => {
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout())
+    // userInitials: () => userInitials()
   };
 };
 

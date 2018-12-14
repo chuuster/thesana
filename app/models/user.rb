@@ -62,4 +62,12 @@ class User < ApplicationRecord
       nil
     end 
   end 
+
+  def initials 
+    if (!self.fname) || (!self.lname)
+      return "ME"
+    else 
+      return self.fname[0].upcase + self.lname[0].upcase
+    end 
+  end 
 end

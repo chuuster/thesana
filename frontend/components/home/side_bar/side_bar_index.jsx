@@ -6,9 +6,9 @@ class SideBarIndex extends React.Component {
     super(props);
   }
 
-  render() {
+  sideBarStaticRender() {
     return (
-      <div className="side-bar-container">
+      <>
         <div className="side-header">
           <Link to="/"><img src={window.greenLogoURL} id="logo-home" /></Link>
         </div>
@@ -30,8 +30,22 @@ class SideBarIndex extends React.Component {
             <span className="side-bar-link-text">Portfolios</span>
           </div>
         </section>
-        <div className="side-reports"></div>
-        <div className="side-team-index"></div>
+        <div className="side-bar-reports">
+          <div className="side-bar-report-header">Reports</div>
+          <div className="side-bar-report-link">Tasks I've Created</div>
+          <div className="side-bar-report-link">Tasks I've Assigned To Others</div>
+          <div className="side-bar-report-link">Recently Completed Tasks</div>
+        </div>
+      </>
+    );
+  }
+
+  render() {
+    return (
+      <div className="side-bar-container">
+        {this.sideBarStaticRender()}
+        <div className="side-team-index">
+        </div>
       </div>
     )
   }

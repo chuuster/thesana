@@ -14,14 +14,14 @@
   padding: 20px 0px 20px 15px;
 }
 
-.side-links-section {
+.side-links-section, .side-bar-reports {
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
   border-bottom: 1px solid #222b37;
 }
 
-.side-bar-link-container {
+.side-bar-link-container, .side-bar-report-link {
   display: flex;
   align-items: center;
   height: 32px;
@@ -48,6 +48,25 @@ a:active */
   font-size: 14px;
 }
 
+.side-bar-reports {
+  padding-top: 10px;
+}
+
+.side-bar-report-header {
+  padding: 5px 15px;
+  font-size: 13px;
+  color: #646f79;
+}
+
+.side-bar-report-link {
+  font-size: 13px;
+  color: #d5dce0;
+}
+
+.side-bar-report-link:hover {
+  cursor: pointer;
+  background: rgba(255,255,255,0.08);
+}
 /* 
 icon color hover: D4DBDF
 icon color: 646F78 */

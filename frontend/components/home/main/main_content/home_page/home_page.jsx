@@ -6,6 +6,39 @@ class HomePage extends React.Component {
     super(props);
   }
 
+  handleProjectOptionsClick() {
+    document.getElementById("projectOptionsDropdown").classList.toggle("show");
+  }
+
+
+  //////////   Sub Components //////////
+
+  renderProjectOptions() {
+    return (
+      <div id="projectOptionsDropdown" className="dropdown-content-project">
+        <button className="project-dropdown-item">Edit Project</button>
+        <button className="project-dropdown-item">Delete Project</button>
+      </div>
+    );
+  }
+
+  renderProjectIndexItem() {
+    return (
+      <div className="home-project-index-item">
+        <div className="big-chip-icon">
+          <div className="big-chip-icon-top-nav">
+            <button onClick={this.handleProjectOptionsClick} className="big-chip-project-options">...</button>
+            {this.renderProjectOptions()}
+          </div>
+          <svg className="big-project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.1 60.1"><path d="M57.1 51.9H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3S58.8 51.9 57.1 51.9z" /><path d="M57.1 33.1H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3C60.1 31.7 58.8 33.1 57.1 33.1z" /><path d="M57.1 14.2H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3S58.8 14.2 57.1 14.2z" /><circle cx="4" cy="11.5" r="4" /><circle cx="4" cy="30.1" r="4" /><circle cx="4" cy="48.7" r="4" /></svg>
+        </div>
+        <span>Project Name</span>
+      </div>
+    );
+  }
+
+  //////////   Main Render //////////
+  
   render() {
     return (
       <div id="home-page-container-outer">
@@ -20,18 +53,8 @@ class HomePage extends React.Component {
             <span>Recent Projects</span>
           </div>
           <div id="home-project-index">
-            <div className="home-project-index-item">
-              <div className="big-chip-icon">
-                <svg className="big-project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.1 60.1"><path d="M57.1 51.9H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3S58.8 51.9 57.1 51.9z" /><path d="M57.1 33.1H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3C60.1 31.7 58.8 33.1 57.1 33.1z" /><path d="M57.1 14.2H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3S58.8 14.2 57.1 14.2z" /><circle cx="4" cy="11.5" r="4" /><circle cx="4" cy="30.1" r="4" /><circle cx="4" cy="48.7" r="4" /></svg>
-              </div>
-              <span>Project Name</span>
-            </div>
-            <div className="home-project-index-item">
-              <div className="big-chip-icon">
-                <svg className="big-project-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.1 60.1"><path d="M57.1 51.9H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3S58.8 51.9 57.1 51.9z" /><path d="M57.1 33.1H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3C60.1 31.7 58.8 33.1 57.1 33.1z" /><path d="M57.1 14.2H16.9c-1.7 0-3-1.3-3-3s1.3-3 3-3h40.2c1.7 0 3 1.3 3 3S58.8 14.2 57.1 14.2z" /><circle cx="4" cy="11.5" r="4" /><circle cx="4" cy="30.1" r="4" /><circle cx="4" cy="48.7" r="4" /></svg>
-              </div>
-              <span>Project Name 2</span>
-            </div>
+           {this.renderProjectIndexItem()}
+           {this.renderProjectIndexItem()}
             <div className="home-project-index-item">
               <div id="home-new-project-icon">+</div>
               <span>New Project</span>

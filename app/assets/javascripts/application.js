@@ -38,5 +38,16 @@ window.onclick = function (event) {
       }
     }
   }
+
+  if (!event.target.matches('.big-chip-project-options')) {
+    const dropdowns = document.getElementsByClassName("dropdown-content-project");
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 };
 

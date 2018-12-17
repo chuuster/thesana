@@ -1,6 +1,6 @@
-const handleDropdownClick = (id) => {
-  return () => {
-    dropdown = document.getElementById(id)
+function handleDropdownClick (id) {
+  return function () {
+    var dropdown = document.getElementById(id);
 
     if (dropdown.classList.contains("show")) {
       removeDropdowns();
@@ -9,18 +9,18 @@ const handleDropdownClick = (id) => {
       dropdown.classList.toggle("show");
     }
   };
-};
+}
 
-const removeDropdowns = () => {
-  const dropdowns = document.querySelectorAll('[class^="dropdown-content"]');
-  let i;
+function removeDropdowns () {
+  var dropdowns = document.querySelectorAll('[class^="dropdown-content"]');
+  var i;
   for (i = 0; i < dropdowns.length; i++) {
-    let openDropdown = dropdowns[i];
+    var openDropdown = dropdowns[i];
     if (openDropdown.classList.contains('show')) {
       openDropdown.classList.remove('show');
     }
   }
-};
+}
 
 window.onclick = function (event) {
   if ((!event.target.matches('.user-circle-button')) &&

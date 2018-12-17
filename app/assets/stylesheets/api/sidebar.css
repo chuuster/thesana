@@ -33,10 +33,6 @@
   cursor: pointer;
 }
 
-/* a:link - a normal, unvisited link
-a:visited - a link the user has visited
-a:hover - a link when the user mouses over it
-a:active */
 
 .side-bar-icon {
   height: 20px;
@@ -119,7 +115,3 @@ a:active */
 .team-index-item span  {
   margin-left: 15px;
 }
-
-/* 
-icon color hover: D4DBDF
-icon color: 646F78 */

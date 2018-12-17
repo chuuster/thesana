@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  validates :name, :team_id, null: false
+  validates :name, :team_id, presence: true
 
   belongs_to :team,
     primary_key: :id,

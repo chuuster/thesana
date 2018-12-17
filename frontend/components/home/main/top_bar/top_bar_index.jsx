@@ -1,19 +1,11 @@
 import React from 'react'; 
 import { Route, Switch } from 'react-router-dom';
+import { CREATE_PROJECT } from "../../../modal/modal"
+
 
 class TopBarIndex extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  //////////    Click Handlers   ////////// 
-
-  handleUserIconClick() {
-    document.getElementById("userDropdown").classList.toggle("show");
-  }
-
-  handleNewButtonClick() {
-    document.getElementById("newDropdown").classList.toggle("show");
   }
 
   //////////   Dropdown Sections //////////  
@@ -25,7 +17,7 @@ class TopBarIndex extends React.Component {
           <svg className="dropdownMenuIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33"><path d="M7.3 32.7c-0.1 0-0.2 0-0.2-0.1 -0.2-0.1-0.3-0.3-0.3-0.4v-7.1C2.4 22.8 0 18.8 0 13.8 0 6.1 7.1 0.3 16.5 0.3S33 6.1 33 13.8c0 7.7-7.1 13.5-16.5 13.5 -0.3 0-0.6 0-0.9 0l0 0 -8 5.3C7.5 32.7 7.4 32.7 7.3 32.7zM16.5 1.3C7.7 1.3 1 6.7 1 13.8c0 3.3 1.1 7.8 6.5 10.5 0.2 0.1 0.3 0.3 0.3 0.4v6.5l7.4-4.9c0.1-0.1 0.2-0.1 0.3-0.1l0.2 0c0.3 0 0.6 0 0.9 0 8.8 0 15.5-5.4 15.5-12.5S25.3 1.3 16.5 1.3z" /></svg>
           Task
         </button>
-        <button className="new-dropdown-item">
+        <button className="new-dropdown-item" onClick={this.props.openModal(CREATE_PROJECT)}>
           <svg className="dropdownMenuIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33"><path d="M7.3 32.7c-0.1 0-0.2 0-0.2-0.1 -0.2-0.1-0.3-0.3-0.3-0.4v-7.1C2.4 22.8 0 18.8 0 13.8 0 6.1 7.1 0.3 16.5 0.3S33 6.1 33 13.8c0 7.7-7.1 13.5-16.5 13.5 -0.3 0-0.6 0-0.9 0l0 0 -8 5.3C7.5 32.7 7.4 32.7 7.3 32.7zM16.5 1.3C7.7 1.3 1 6.7 1 13.8c0 3.3 1.1 7.8 6.5 10.5 0.2 0.1 0.3 0.3 0.3 0.4v6.5l7.4-4.9c0.1-0.1 0.2-0.1 0.3-0.1l0.2 0c0.3 0 0.6 0 0.9 0 8.8 0 15.5-5.4 15.5-12.5S25.3 1.3 16.5 1.3z" /></svg>
           Project
         </button>
@@ -97,7 +89,7 @@ class TopBarIndex extends React.Component {
         <div className="top-bar-right">
           
           <div className="dropdown">
-            <button onClick={this.handleNewButtonClick} className="top-bar-gradient-button">+ New</button>
+            <button onClick={handleDropdownClick("newDropdown")} className="top-bar-gradient-button">+ New</button>
             {this.newButtonDropdown()}
           </div>
 
@@ -105,7 +97,7 @@ class TopBarIndex extends React.Component {
           <button className="top-bar-upgrade-button">Upgrade</button>
           
           <div className="dropdown">
-            <button onClick={this.handleUserIconClick} className="user-circle-button">{this.props.currentUser.initials}</button>
+            <button onClick={handleDropdownClick("userDropdown")} className="user-circle-button">{this.props.currentUser.initials}</button>
             {this.userIconDropdown()}
           </div>
           

@@ -7,9 +7,16 @@ class ProjectPage extends React.Component {
   }
 
   render() {
-    return (
-      <div>project page</div>
-    );
+    if (this.props.project === undefined ) {
+      return null;
+    } else {
+      return (
+        <div>
+          <span>name: {this.props.project.name}</span> <br></br>
+          <span>description: {this.props.project.description}</span> 
+        </div>
+      );
+    }
   }
 }
 

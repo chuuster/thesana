@@ -15,39 +15,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
-window.onclick = function (event) {
-  if (!event.target.matches('.top-bar-gradient-button')) {
-    const dropdowns = document.getElementsByClassName("dropdown-content-new");
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-
-  if (!event.target.matches('.user-circle-button')) {
-    const dropdowns = document.getElementsByClassName("dropdown-content-user");
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-
-  if (!event.target.matches('.big-chip-project-options')) {
-    const dropdowns = document.getElementsByClassName("dropdown-content-project");
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-};
-

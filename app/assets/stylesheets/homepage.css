@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /* background: pink; */
   width: 100%;
   height: 100%;
 }
@@ -20,7 +19,7 @@
   min-height: 30px;
   color: #151b26;
   border-bottom: 2px solid #edf1f2;
-  margin: 30px 30px 15px 30px;
+  margin: 30px 20px 15px 20px;
   padding: 10px 0 10px 0;
 }
 
@@ -41,6 +40,7 @@
 #home-project-index {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .home-project-index-item {
@@ -48,7 +48,7 @@
   margin-right: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -65,6 +65,7 @@
     transition-duration: 0.2s;
     transition-timing-function: ease;
     transition-delay: 0s;
+  z-index: 10;
 }
 
 .home-project-index-item:hover 
@@ -74,12 +75,21 @@
 
 
 .home-project-index-item span {
-  display: block;
+  box-sizing: border-box;
   margin-top: 10px;
-  padding: 0 10px 0 10px;
-  font-size: 13px;
+  padding: 0 10px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   color: #151b26;
-  background: 
+  display: -webkit-box;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 17px;
+  max-height: 34px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  width: 130px;
 }
 
 .big-chip-icon {
@@ -126,12 +136,19 @@
   opacity: 0;
   position: absolute;
   bottom: 20px;
-  left: 20px;
-  font-size: 28px;
-  color: white;
+  left: 23px;
+  z-index: 100;
 }
 
-#projectOptionsDropdown {
+.big-chip-project-options-icon {
+  height: 16px;
+  width: 16px; 
+  fill: white;
+
+}
+
+/* #projectOptionsDropdown */
+.dropdown-content-project {
   position: absolute;
   top: -20px;
   left: 25px;

@@ -4,9 +4,15 @@ import { Link } from 'react-router-dom';
 class SideBarIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
+  ////////// Lifecycle Methods //////////
+
+  // componentDidMount() {
+  //   this.props.fetchProjects();
+  // }
+
+  ////////// Sub Components //////////
   sideBarStaticRender() {
     return (
       <>
@@ -41,6 +47,21 @@ class SideBarIndex extends React.Component {
     );
   }
 
+  renderProjectIndexItem(project) {
+    return (
+      <Link to={`/projects/${project.id}`} key={project.id} className="side-project-index-item">
+        <div className="mini-chip-icon"></div>
+        <span>{project.name}</span>
+      </Link>
+    );
+  }
+
+  // renderMemberIndexItem(member) {
+
+  // }
+
+  ////////// Main Render //////////
+
   render() {
     return (
       <div className="side-bar-container">
@@ -52,21 +73,14 @@ class SideBarIndex extends React.Component {
             <span>Team Awesome</span>
             
             <div className="member-index">
-              <button className="user-circle-button">CC</button>
+              <button className="user-circle-button">{this.props.currentUser.initials}</button>
               <button className="user-circle-button">PD</button>
               <button className="user-circle-button">MS</button>
               <button className="user-circle-button">JP</button>
             </div>
 
             <div className="project-index">
-              <Link to="/projects/1" className="side-project-index-item">
-                <div className="mini-chip-icon"></div>
-                <span>Project Title 1</span>
-              </Link>
-              <Link to="/projects/2" className="side-project-index-item">
-                <div className="mini-chip-icon"></div>
-                <span>Project Title 2</span>
-              </Link>
+              {this.props.projects.map((project) => this.renderProjectIndexItem(project))}
             </div>
 
           </div>

@@ -12,7 +12,7 @@ class ProjectForm extends React.Component {
   ////////// Click/Input Handlers //////////
 
   update(field) {
-    return () => this.setState({[field]: e.currentTarget.value});
+    return (e) => this.setState({[field]: e.currentTarget.value});
     // return (e) => {
     //   if (e.keyCode === 13) {
     //     this.handleSubmit(e);

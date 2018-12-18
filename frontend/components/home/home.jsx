@@ -3,7 +3,9 @@ import MainDisplayContainer from "./main/main_display_container";
 import SideBarContainer from "./side_bar/side_bar_container";
 import Modal from "../modal/modal"
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { fetchProjects } from "../../actions/project_actions";
+import { fetchTasks } from "../../actions/task_actions";
 
 const mapStateToProps = (state) => {
   return {};
@@ -11,7 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchProjects: () => dispatch(fetchProjects())
+    fetchProjects: () => dispatch(fetchProjects()),
+    fetchTasks: () => dispatch(fetchTasks()),
   };
 };
 
@@ -22,6 +25,7 @@ class Home extends React.Component {
   
   componentDidMount() {
     this.props.fetchProjects();
+    this.props.fetchTasks();
   }
   
   render() {
@@ -35,4 +39,4 @@ class Home extends React.Component {
   }
 } 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

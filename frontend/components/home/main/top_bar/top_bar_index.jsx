@@ -6,8 +6,15 @@ import { CREATE_PROJECT } from "../../../modal/modal"
 class TopBarIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.renderProjectView = this.renderProjectView.bind(this);
+    this.renderTopBarLeft = this.renderTopBarLeft.bind(this);
   }
 
+  //////////   Lifecycle Methods //////////
+  // shouldComponentUpdate() {
+    
+  // }
+  
   //////////   Dropdown Sections //////////  
 
   newButtonDropdown() {
@@ -49,7 +56,7 @@ class TopBarIndex extends React.Component {
         <div className="top-bar-left-index">
           <Switch>
             <Route exact path="/home" render={() => (<span>Home</span>)} />
-            <Route exact path="/projects/:projectId" render={this.renderProjectView} />
+            <Route exact path="/projects/:projectId" render={() => this.renderProjectView()} />
           </Switch>
         </div>
       </div>
@@ -64,7 +71,7 @@ class TopBarIndex extends React.Component {
         </div>
         <div className="top-bar-nav">
           <div className="top-bar-project-interaction">
-            <span>Project Name</span>
+            <span>{this.props.project.name}</span>
           </div>
           <div className="top-bar-tabs">
             <div className="top-bar-tab-item">List</div>
@@ -82,28 +89,32 @@ class TopBarIndex extends React.Component {
   //////////      Main Render          ////////// 
 
   render() {
-    return (
-      <div className="top-bar-container"> 
-        {this.renderTopBarLeft()}
+    if (this.props === undefined) {
+      return null
+    } else {
+      return (
+        <div className="top-bar-container"> 
+          {this.renderTopBarLeft()}
 
-        <div className="top-bar-right">
-          
-          <div className="dropdown">
-            <button onClick={handleDropdownClick("newDropdown")} className="top-bar-gradient-button">+ New</button>
-            {this.newButtonDropdown()}
-          </div>
+          <div className="top-bar-right">
+            
+            <div className="dropdown">
+              <button onClick={handleDropdownClick("newDropdown")} className="top-bar-gradient-button">+ New</button>
+              {this.newButtonDropdown()}
+            </div>
 
-          <button className="top-bar-question-button">?</button>
-          <button className="top-bar-upgrade-button">Upgrade</button>
-          
-          <div className="dropdown">
-            <button onClick={handleDropdownClick("userDropdown")} className="user-circle-button">{this.props.currentUser.initials}</button>
-            {this.userIconDropdown()}
+            <button className="top-bar-question-button">?</button>
+            <button className="top-bar-upgrade-button">Upgrade</button>
+            
+            <div className="dropdown">
+              <button onClick={handleDropdownClick("userDropdown")} className="user-circle-button">{this.props.currentUser.initials}</button>
+              {this.userIconDropdown()}
+            </div>
+            
           </div>
-          
         </div>
-      </div>
-    ) 
+      );
+    } 
   }
 };
 

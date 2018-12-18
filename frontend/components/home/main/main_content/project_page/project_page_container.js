@@ -7,6 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
     project: state.entities.projects[ownProps.match.params.projectId]
+    // tasks: state.entities.tasks.
   };
 };
 

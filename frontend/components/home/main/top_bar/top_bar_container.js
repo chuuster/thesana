@@ -5,8 +5,16 @@ import TopBarIndex from "./top_bar_index";
 import { openModal } from '../../../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  let activeProject;
+  if (ownProps.match.params.projectId === undefined) {
+    activeProject = {};
+  } else {
+    activeProject = state.entities.projects[ownProps.match.params.projectId] || {}
+  }
+
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    project: activeProject
   };
 };
 

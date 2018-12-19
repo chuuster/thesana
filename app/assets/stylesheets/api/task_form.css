@@ -1,0 +1,217 @@
+.task-form-container {
+  color: #151b26;
+  min-width: 495px;
+  margin: 15px 15px 15px 0px;
+  background: white;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+}
+
+.task-form-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e6e8;
+  display: flex;
+  height: 50px;
+  padding-left: 30px;
+  padding-right: 15px;
+}
+
+.mark-complete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding: 0 9px;
+  border: 1px solid #b7bfc6;
+  color: #646f79;
+  fill: #848f99;
+  border-radius: 4px;
+}
+
+.mark-complete-button:hover {
+  background-color: #f6f8f9;
+  border-color: #646f79;
+  color: #222b37;
+  fill: #222b37;
+}
+
+.mark-complete-check-icon {
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+}
+
+.form-body .task-name-detail-input {
+  resize: none;
+  height: 32px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  min-height: 0;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  margin: -5px;
+}
+
+.task-name-detail-input:hover {
+  border: 1px solid #d5dce0;
+}
+
+::placeholder {
+  color: #848f99;
+}
+
+.assignee-due-date-row {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e6e8;
+  display: flex;
+  padding-bottom: 15px;
+}
+
+.dashed-circle-icon {
+  box-sizing: border-box;
+  color: #848f99;
+  fill: #848f99;
+  flex: 0 0 auto;
+  font-size: 13px;
+  height: 30px;
+  line-height: 1;
+  transition: 200ms box-shadow,200ms color,200ms background,200ms fill;
+  width: 30px;
+  background: #fff;
+  border: 1px solid #b7bfc6;
+  border-radius: 50%;
+  align-items: center;
+  border-style: dashed;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin-right: 10px;
+  transition: none;
+}
+
+.dashed-circle-icon svg {
+  height: 16px;
+  width: 16px;
+}
+
+.assignee-button, .due-date-button {
+  font-size: 13px;
+  background: #fff;
+  border-color: #b7bfc6;
+  color: #646f79;
+  fill: #848f99;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  display: inline-flex;
+  flex: 1 1 auto;
+  min-width: 1px;
+  padding: 3px;
+  padding-right: 10px;
+  position: relative;
+  transition: .2s box-shadow, .2s color;
+  margin-right: 50px;
+}
+
+.assignee-button:hover, .due-date-button:hover {
+  background-color: #f6f8f9;
+  border-color: #646f79;
+  border-style: solid;
+  color: #222b37;
+  fill: #222b37;
+  cursor: pointer;
+}
+
+.assignee-button:hover .dashed-circle-icon,
+.due-date-button:hover .dashed-circle-icon {
+  background-color: #f6f8f9;
+  border-color: #646f79;
+  border-style: solid;
+  color: #222b37;
+  fill: #222b37;
+}
+
+.description-section {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  height: 50px;
+}
+
+.description-section svg {
+  fill: #b7bfc6;
+  height: 16px;
+  width: 16px;
+  padding: 5px 10px 0 10px ;
+}
+
+.description-section textarea {
+  resize: none;
+  height: 50px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  min-height: 0;
+  padding: 4px 9px 4px 9px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  margin: -2px;
+  width: 100%;
+}
+
+.project-section {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e6e8;
+  padding: 15px 0 20px 0;
+}
+
+.project-section svg {
+  fill: #b7bfc6;
+  height: 16px;
+  width: 16px;
+  padding: 0px 9px;
+}
+
+.belong-to-project-button {
+  background-color: #ea4e9d;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 13px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 10px;
+  margin: 0 5px;
+}
+
+.update-task-button-row {
+  display: flex;
+  margin-left: 20px;
+}
+
+.update-task-button-row .blue-button{
+  border-radius: 4px; border: 1px solid #14aaf5;
+  border: 1px solid #14aaf5;
+  font-size: 13px;
+  height: 30;
+  min-width: 50px;
+  margin: 15px;
+}
+
+.task-story-section {
+  color: #848f99;
+  font-size: 11px;
+  line-height: 17px;
+  border-bottom: 1px solid #e0e6e8;
+}
+
+.task-story {
+  margin: 15px 45px;
+}

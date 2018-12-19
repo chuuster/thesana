@@ -56,7 +56,7 @@ class TopBarIndex extends React.Component {
         <div className="top-bar-left-index">
           <Switch>
             <Route exact path="/home" render={() => (<span>Home</span>)} />
-            <Route exact path="/projects/:projectId" render={() => this.renderProjectView()} />
+            <Route path="/projects/:projectId/:taskId?" render={() => this.renderProjectView()} />
           </Switch>
         </div>
       </div>

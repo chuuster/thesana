@@ -111,4 +111,4 @@ class ProjectForm extends React.Component {
   }
 }
 
-export default withRouter(ProjectForm);
+export default (ProjectForm);

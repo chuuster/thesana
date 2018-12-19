@@ -111,6 +111,8 @@
 }
 
 .blue-button:hover {
+  background: #008ce3;
+  border-color: #008ce3;
   cursor: pointer;
 }
 

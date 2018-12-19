@@ -7,8 +7,7 @@ import ProjectPageContainer from "./project_page/project_page_container";
 const MainContent = () => (
   <Switch>
     <ProtectedRoute exact path="/home" component={ HomePageContainer } />
-    <ProtectedRoute exact path="/projects/:projectId" component={ProjectPageContainer} />
-    <ProtectedRoute exact path="/tasks/:taskId" component={ProjectPageContainer} />
+    <ProtectedRoute path="/projects/:projectId/:taskId?" component={ProjectPageContainer} />
   </Switch>
 );
 

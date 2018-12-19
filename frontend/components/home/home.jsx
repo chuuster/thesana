@@ -24,8 +24,8 @@ class Home extends React.Component {
   }
   
   componentDidMount() {
-    this.props.fetchProjects();
     this.props.fetchTasks();
+    this.props.fetchProjects();
   }
   
   render() {

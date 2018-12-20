@@ -50,16 +50,16 @@ export const fetchTask = (id) => dispatch => {
       );
 };
 
-export const createTask = (Task) => dispatch => {
+export const createTask = (task) => dispatch => {
   return (
-    TaskApiUtil.createTask(Task)
+    TaskApiUtil.createTask(task)
       .then((res) => dispatch(receiveTask(res)), (errors) => (dispatch(receiveErrors(errors.responseJSON)))
       ));
 };
 
-export const updateTask = (Task) => dispatch => {
+export const updateTask = (task) => dispatch => {
   return (
-    TaskApiUtil.updateTask(Task)
+    TaskApiUtil.updateTask(task)
       .then((res) => dispatch(receiveTask(res)), (errors) => (dispatch(receiveErrors(errors.responseJSON)))
       ));
 };

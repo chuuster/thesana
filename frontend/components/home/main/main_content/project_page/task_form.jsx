@@ -9,6 +9,7 @@ class TaskForm extends React.Component {
     this.state = this.props.task;
     this.handleTaskClose = this.handleTaskClose.bind(this);
     this.handleDueDate = this.handleDueDate.bind(this);
+    this.handleAssigneeRemove = this.handleAssigneeRemove.bind(this);
   }
 
   ////////// Click/Input Handlers //////////
@@ -31,6 +32,26 @@ class TaskForm extends React.Component {
     return (e) => {
       this.setState({ done: value }, () => this.props.updateTask(this.state));
     }
+  }
+
+  handleAssigneeDropdown(id) {
+    return (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      handleDropdownClick(id)();
+    }
+  }
+
+  handleAssigneeSelect(userId) {
+    return (e) => {
+      this.setState({ assignee_id: userId }, () => this.props.updateTask(this.state));
+    }
+  }
+
+  handleAssigneeRemove(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({ assignee_id: null }, () => this.props.updateTask(this.state));
   }
 
   ////////// Lifecycle Methods //////////
@@ -88,32 +109,84 @@ class TaskForm extends React.Component {
   ////////// Sub Components -- Middle //////////
 
   renderCalendarSection() {
+    let selectedDate;
+    (this.state.due_date !== null) ? selectedDate = new Date(this.state.due_date) : selectedDate = null
+
     return (
       <div className="due-date-section">
-        {this.renderDatePicker()}
+        <DatePicker
+          customInput={<DatePickerInput selectedDate={selectedDate} />}
+          className="datepicker"
+          selected={selectedDate}
+          onChange={this.handleDueDate}
+          defaultValue={null}
+          isClearable={true}
+        />
       </div>
     );
   }
 
-  renderDatePicker() {
-    let selectedDate;
-    (this.state.due_date !== null) ? selectedDate = new Date(this.state.due_date) : selectedDate = null
-    
+  renderAssigneeDropdown() {
+    const usersArray = Object.values(this.props.users)
     return (
-      <DatePicker
-        customInput={<DatePickerInput selectedDate={selectedDate}/>}
-        className="datepicker"
-        selected={selectedDate}
-        onChange={this.handleDueDate}
-        defaultValue={null}
-        isClearable={true}
-      />
+      <ul id="assignee-dropdown" className="dropdown-content-assignee">
+        {usersArray.map(user => {
+          return (
+            <li 
+              onClick={this.handleAssigneeSelect(user.id)}
+              key={user.id}>
+              <button key={user.id} className="user-circle-button">{user.initials}</button>
+              <span className="user-name">{`${user.fname} ${user.lname}`}</span>
+            </li>
+          );
+        })}
+      </ul>
     );
   }
 
   renderAssigneeSection() {
+    let assigneeInfo;
+    let userIcon;
+    let removeAssigneeButton;
+    if (Number.isInteger(this.state.assignee_id) && Object.values(this.props.users).length > 1) {
+      let user = this.props.users[this.state.assignee_id];
+      assigneeInfo = (
+        <div className="assigned-info">
+          <span className="assigned-top-line">Assigned to</span><br></br>
+          <span className="assigned-bottom-line">{user.fname} {user.lname}</span>
+        </div>
+      )
+      userIcon = (
+        <button key={user.id} className="user-circle-button">{user.initials}</button>
+      )
+      removeAssigneeButton = (
+        <div className="remove-assignee-button" onClick={this.handleAssigneeRemove}>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xlink="http://www.w3.org/1999/xlink"><path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z" /></svg>
+        </div>
+      )
+    } else {
+      assigneeInfo = <div>Unassigned</div>
+      userIcon = (
+        <div className="dashed-circle-icon">
+          <svg viewBox="0 0 32 32">
+            <path d="M16,18c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8S20.4,18,16,18z M16,4c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S19.3,4,16,4z" />
+            <path d="M29,32c-0.6,0-1-0.4-1-1v-4.2c0-2.6-2.2-4.8-4.8-4.8H8.8C6.2,22,4,24.2,4,26.8V31c0,0.6-0.4,1-1,1s-1-0.4-1-1v-4.2C2,23,5,20,8.8,20h14.4c3.7,0,6.8,3,6.8,6.8V31C30,31.6,29.6,32,29,32z" />
+          </svg>
+        </div>
+      )
+      removeAssigneeButton = <div></div>
+    }
+
+
     return (      
-      <UserPicker users={this.props.users}/>
+      <div className='assignee-section'>
+        <div className="assignee-button" onClick={this.handleAssigneeDropdown("assignee-dropdown")}>
+          {userIcon}
+          {assigneeInfo}
+          {removeAssigneeButton}
+        </div>
+        {this.renderAssigneeDropdown()}
+      </div>
     );
   }
 
@@ -138,7 +211,7 @@ class TaskForm extends React.Component {
     return (
       <div className="project-section">
         <svg height="511pt" viewBox="-64 0 511 511.9999" width="511pt" xmlns="http://www.w3.org/2000/svg"><path d="m336.472656 64.035156h-47.996094v-16c0-8.835937-7.160156-16-15.996093-16h-34.734375c-8.820313-24.996094-36.238282-38.109375-61.234375-29.285156-13.6875 4.832031-24.457031 15.597656-29.289063 29.285156h-34.730468c-8.835938 0-16 7.164063-16 16v16h-47.996094c-26.507813 0-47.996094 21.488282-47.996094 47.996094v351.972656c0 26.507813 21.488281 47.996094 47.996094 47.996094h287.980468c26.507813 0 47.996094-21.488281 47.996094-47.996094v-351.972656c-.003906-26.507812-21.492187-47.996094-48-47.996094zm-207.984375 0h32c8.835938 0 16-7.164062 16-16 0-8.835937 7.160157-16 15.996094-16s16 7.164063 16 16c0 8.835938 7.164063 16 16 16h31.996094v31.996094h-127.992188zm223.984375 399.96875c0 8.835938-7.164062 16-16 16h-287.976562c-8.835938 0-16-7.164062-16-16v-351.972656c0-8.835938 7.164062-16 16-16h47.996094v16c0 8.835938 7.164062 15.996094 16 15.996094h159.988281c8.835937 0 15.996093-7.160156 15.996093-15.996094v-16h48c8.835938 0 15.996094 7.164062 15.996094 16zm0 0" /><path d="m288.476562 192.023438h-191.984374c-8.835938 0-16 7.164062-16 16 0 8.835937 7.164062 16 16 16h191.984374c8.835938 0 16-7.164063 16-16 0-8.835938-7.164062-16-16-16zm0 0" /><path d="m288.476562 288.015625h-191.984374c-8.835938 0-16 7.164063-16 16s7.164062 16 16 16h191.984374c8.835938 0 16-7.164063 16-16s-7.164062-16-16-16zm0 0" /><path d="m288.476562 384.011719h-191.984374c-8.835938 0-16 7.160156-16 15.996093 0 8.835938 7.164062 16 16 16h191.984374c8.835938 0 16-7.164062 16-16 0-8.835937-7.164062-15.996093-16-15.996093zm0 0" /></svg>
-        <div className="belong-to-project-button">Project Name</div>
+        <div className="belong-to-project-button">{this.props.project.name}</div>
       </div>
     );
   }
@@ -148,7 +221,7 @@ class TaskForm extends React.Component {
       <div className="task-story-section">
         <div className="task-story">
           User created task. 11 days ago<br></br>
-          User added task to Project Name. 11 days ago
+          User added task to {this.props.project.name}. 11 days ago
         </div>
       </div>
     );

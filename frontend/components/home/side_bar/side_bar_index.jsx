@@ -58,7 +58,7 @@ class SideBarIndex extends React.Component {
 
   renderTeamMemberIndexItem(member) {
     return (
-      <button className="user-circle-button">{member.initials}</button>
+      <button key={member.id} className="user-circle-button">{member.initials}</button>
     );
   }
 

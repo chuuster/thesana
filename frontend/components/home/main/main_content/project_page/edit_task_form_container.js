@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import TaskForm from "./task_form";
-import { updateTask, fetchTask } from "../../../../../actions/task_actions";
+import { updateTask, fetchTask, deleteTask } from "../../../../../actions/task_actions";
 
 const mapStateToProps = (state, ownProps) => {
   const defaultTask = {
@@ -13,18 +13,26 @@ const mapStateToProps = (state, ownProps) => {
     due_date: null,
     done: false
   };
+  
+  let task;
+  let project;
+
+  task = state.entities.tasks[ownProps.match.params.taskId] || defaultTask;
+  project = state.entities.projects[task.project_id] || {id: "", name: ""};
 
   return {
     currentUser: state.entities.users[state.session.id],
-    task: state.entities.tasks[ownProps.match.params.taskId] || defaultTask,
-    users: Object.values(state.entities.users)
+    task: task,
+    users: state.entities.users,
+    project: project
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchTask: (id) => dispatch(fetchTask(id)),
-    updateTask: (task) => dispatch(updateTask(task))
+    updateTask: (task) => dispatch(updateTask(task)),
+    deleteTask: (id) => dispatch(deleteTask(id))
   };
 };
 

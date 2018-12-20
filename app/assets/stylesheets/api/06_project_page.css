@@ -74,10 +74,28 @@
 }
 
 .mark-complete-check-button {
-    fill: #848f99;
-    height: 20px;
-    width: 20px;
-    margin: 0 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 50%;
+  fill: #848f99;
+  height: 20px;
+  width: 20px;
+  margin: 0 10px 0 0;
+  background: #fff;
+  border: 1px solid #b7bfc6;
+}
+
+.mark-complete-check-button svg {
+  height: 12px;
+  width: 12px;
+}
+
+.mark-complete-check-button:hover {
+  background-color: #e2fffa;
+  border-color: #25e8c8;
+  color: #25e8c8;
+  fill: #25e8c8;
 }
 
 .task-index-row textarea,
@@ -97,3 +115,8 @@
   font-family: sans-serif;
   cursor: pointer;
 }
+
+/* .success-toast {
+  background-color: #25e8c8;
+  background-image: linear-gradient(to right, #25e8c8, #32c1ff);
+} */

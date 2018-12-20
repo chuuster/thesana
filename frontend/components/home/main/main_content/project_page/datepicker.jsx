@@ -17,7 +17,7 @@ class DatePickerInput extends React.Component {
         </div>
         <div>Due Date
           {(selectedDate !== null) ? <br></br> : ""}
-          {selectedDate}
+          <div className="due-date-future">{selectedDate}</div>
         </div>
       </div>
     );

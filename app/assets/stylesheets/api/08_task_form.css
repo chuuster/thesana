@@ -78,6 +78,16 @@
   color: #848f99;
 }
 
+.assignee-due-date-row {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e6e8;
+  display: flex;
+  padding-bottom: 15px;
+}
+
+
 .dashed-circle-icon {
   box-sizing: border-box;
   color: #848f99;
@@ -109,7 +119,7 @@
   font-size: 13px;
   background: #fff;
   border-color: #b7bfc6;
-  color: #646f79;
+  color: #848f99;
   fill: #848f99;
   align-items: center;
   border: 1px solid transparent;
@@ -121,14 +131,13 @@
   padding-right: 10px;
   position: relative;
   transition: .2s box-shadow, .2s color;
-  margin-right: 50px;
+  margin-right: 30px;
 }
 
 .assignee-button:hover, .react-datepicker__input-container:hover {
   background-color: #f6f8f9;
   border-color: #646f79;
   border-style: solid;
-  color: #222b37;
   fill: #222b37;
   cursor: pointer;
 }
@@ -221,34 +230,6 @@
   margin: 15px 45px;
 }
 
-
-/* .due-date-button:hover .date-removal-button {
-  display: block;
-  line-height: 10px;
-} */
-
-/* .date-removal-button {
-  display: none;
-  height: 10px;
-  width: 10px;
-  fill: white;
-  border-radius: 50%;
-  background-color: #848f99;
-  padding: 2px;
-  margin: 0 -5px 0 10px;
-}
-
-.date-removal-button:hover {
-  background-color: #646f79;
-} */
-
-/* .react-datepicker__input-container {
-  position: relative;
-  display: inline-block;
-  border: 1px solid black;
-  border-radius: 18px;
-  min-width: 0;
-} */
 .due-date-button {
   display: flex;
   align-items: center;
@@ -278,4 +259,77 @@
 
 .react-datepicker__close-icon:hover::after {
   background-color: #646f79;
+}
+
+.assignee-section {
+  position: relative;
+}
+
+.dropdown-content-assignee {
+  position: absolute;
+  top: 40px;
+  background: white;
+  padding: 5px 0 5px 0;
+  font-size: 13px;
+  min-width: 250px;
+  box-shadow: 0px 0px 5px lightgrey;
+}
+
+
+.dropdown-content-assignee li {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.dropdown-content-assignee span {
+  padding-left: 10px;
+}
+
+.dropdown-content-assignee li:hover {
+  color: white;
+  background: #14aaf5;
+}
+
+.assigned-info {
+  margin-left: 10px;
+  padding-right: 15px;
+}
+
+.assigned-bottom-line {
+  color: #151b26;
+}
+
+.assignee-button .user-circle-button {
+  height: 30px;
+  width: 30px;
+}
+
+.assignee-button:hover .remove-assignee-button {
+  display: flex;
+}
+
+.remove-assignee-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 16px;
+  background: #848f99;
+  border-radius: 50%;
+  fill: white;
+  color: white;
+  position: absolute;
+  right: 5px;
+}
+
+.remove-assignee-button:hover {
+  background: #646f79;
+}
+
+.remove-assignee-button svg {
+  width: 6px;
+  height: 6px;
 }

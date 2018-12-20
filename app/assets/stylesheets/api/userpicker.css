@@ -1,0 +1,49 @@
+.assignee-due-date-row {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e0e6e8;
+  display: flex;
+  padding-bottom: 15px;
+}
+
+
+.assignee-button {
+  font-size: 13px;
+  background: #fff;
+  border-color: #b7bfc6;
+  color: #646f79;
+  fill: #848f99;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  display: inline-flex;
+  flex: 1 1 auto;
+  min-width: 1px;
+  padding: 3px;
+  padding-right: 10px;
+  position: relative;
+  transition: .2s box-shadow, .2s color;
+  margin-right: 50px;
+}
+
+.assignee-button:hover {
+  background-color: #f6f8f9;
+  border-color: #646f79;
+  border-style: solid;
+  color: #222b37;
+  fill: #222b37;
+  cursor: pointer;
+}
+
+.assignee-button:hover .dashed-circle-icon {
+  background-color: #f6f8f9;
+  border-color: #646f79;
+  border-style: solid;
+  color: #222b37;
+  fill: #222b37;
+}
+
+.dropdown-content-assignee {
+  position: absolute;
+}

@@ -1,52 +1,47 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import DatePicker from "react-datepicker";
+import DatePickerInput from "./datepicker.jsx";
+import UserPicker from "./userpicker";
 
 class TaskForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.task;
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTaskClose = this.handleTaskClose.bind(this);
-    this.renderToolbar = this.renderToolbar.bind(this);
+    this.handleDueDate = this.handleDueDate.bind(this);
   }
 
   ////////// Click/Input Handlers //////////
 
   update(field) {
-    return (e) => this.setState({ [field]: e.currentTarget.value });
+    return (e) => {
+      this.setState({ [field]: e.currentTarget.value }, () => this.props.updateTask(this.state));
+    }
+  }
+
+  handleDueDate(date) {
+    this.setState({ due_date: date }, () => this.props.updateTask(this.state));
   }
 
   handleTaskClose() {
     this.props.history.push(`/projects/${this.props.match.params.projectId}`);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.updateTask(this.state);
+  toggleDone(value) {
+    return (e) => {
+      this.setState({ done: value }, () => this.props.updateTask(this.state));
+    }
   }
 
   ////////// Lifecycle Methods //////////
 
-  // shouldComponentUpdate() {
-  //   debugger;
-  //   if (this.props.project === undefined) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
-
-  componentDidMount() {
-    // this.props.fetchTask(this.props.match.params.taskId);
-  }
-  
   componentDidUpdate(prevProps) {
     if (prevProps.task.id !== this.props.task.id) {
       this.setState(this.props.task)
     }
   }
 
-  ////////// Sub Components //////////
+  ////////// Sub Components -- Header //////////
 
   renderNameInput() {
     return (
@@ -59,30 +54,60 @@ class TaskForm extends React.Component {
     );
   }
 
-  renderToolbar() {
+  renderMarkComplete() {
     return (
-      <div className="task-form-toolbar">
-        <button className="mark-complete-button">
-          <svg className="mark-complete-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
-          Mark Complete
-                </button>
-        <div onClick={this.handleTaskClose} className="close-x">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.1 31.1"><polygon points="31.1 1.4 29.7 0 15.6 14.1 1.4 0 0 1.4 14.1 15.6 0 29.7 1.4 31.1 15.6 17 29.7 31.1 31.1 29.7 17 15.6 " /></svg>
-        </div>
-      </div>
+      <button onClick={this.toggleDone(true)} className="mark-complete-button">
+        <svg className="mark-complete-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
+        Mark Complete
+      </button>
     );
   }
+
+  renderCompleted() {
+    return (
+      <button onClick={this.toggleDone(false)} className="mark-complete-button completed">
+        <svg className="mark-complete-check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
+        Completed
+      </button>
+    );
+  }
+
+  renderToolbar() {
+    return (
+      <header>
+        <div className="task-form-toolbar">
+          {(this.props.task.done) ? this.renderCompleted() : this.renderMarkComplete()}
+          <div onClick={this.handleTaskClose} className="close-x">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.1 31.1"><polygon points="31.1 1.4 29.7 0 15.6 14.1 1.4 0 0 1.4 14.1 15.6 0 29.7 1.4 31.1 15.6 17 29.7 31.1 31.1 29.7 17 15.6 " /></svg>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
+  ////////// Sub Components -- Middle //////////
 
   renderCalendarSection() {
     return (
       <div className="due-date-section">
-        <div className="due-date-button">
-          <div className="dashed-circle-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366.8 366.8"><path d="M353.4 71.6c-2.4-11.6-8-22-16-30 -2.4-2.4-5.2-4.8-8.4-6.8l-0.4-0.4c-0.4-0.4-0.8-0.4-1.2-0.8 -1.2-0.8-2.4-1.6-3.6-2h-0.4c-8.4-4.4-17.6-6.8-28-6.8h-24.8V7.6c0-4-3.2-7.6-7.6-7.6 -4 0-7.6 3.2-7.6 7.6V24H111.8V7.6c0-4-3.6-7.6-7.6-7.6s-7.6 3.2-7.6 7.6V24H71.8c-7.6 0-15.2 1.6-22 4.4 -7.6 3.2-14.4 7.6-20 13.2 -3.2 3.2-6 6.8-8.4 10.4 -2.4 4-4.4 8-6 12.4 -0.8 2.4-1.6 4.8-2 7.2 -0.8 4-1.2 8-1.2 12v40V308c0 16.4 6.8 31.2 17.2 41.6C40.2 360.4 55 366.8 71 366.8h224.8c16.4 0 31.2-6.8 41.6-17.2 10.8-10.8 17.2-25.6 17.2-41.6V123.6v-40C354.6 79.6 354.2 75.6 353.4 71.6zM27.8 83.2c0-3.2 0.4-6 0.8-8.8 0.4-2.8 1.6-5.6 2.4-8.4 1.6-3.6 3.6-6.8 5.6-9.6 1.2-1.6 2.4-2.8 3.6-4.4 2.4-2.4 5.2-4.4 8-6.4 6.8-4 14.4-6.4 22.8-6.4h24.8v16.4c0 4 3.2 7.6 7.6 7.6 4 0 7.6-3.2 7.6-7.6V39.2h145.6v16.4c0 4 3.2 7.6 7.6 7.6 4 0 7.6-3.2 7.6-7.6V39.2h24.8c8.4 0 16.4 2.4 22.8 6.4 2.8 2 5.6 4 8 6.4 6 6 10.4 13.6 12 22.4 0.4 2.8 0.8 6 0.8 8.8V116H27.8V83.2zM340.6 307.6c0 12.4-4.8 23.6-12.8 31.6S308.6 352 296.6 352H71.8c-12 0-23.2-4.8-31.2-12.8S27.8 320 27.8 308V130.8h312.8V307.6z" /></svg>
-          </div>
-          <div>Due Date</div>
-        </div>
+        {this.renderDatePicker()}
       </div>
+    );
+  }
+
+  renderDatePicker() {
+    let selectedDate;
+    (this.state.due_date !== null) ? selectedDate = new Date(this.state.due_date) : selectedDate = null
+    
+    return (
+      <DatePicker
+        customInput={<DatePickerInput selectedDate={selectedDate}/>}
+        className="datepicker"
+        selected={selectedDate}
+        onChange={this.handleDueDate}
+        defaultValue={null}
+        isClearable={true}
+      />
     );
   }
 
@@ -97,6 +122,7 @@ class TaskForm extends React.Component {
             </svg>
           </div>
           <div>Unassigned</div>
+          <UserPicker users={this.props.users}/>
         </div>
       </div>
     );
@@ -109,13 +135,15 @@ class TaskForm extends React.Component {
         <textarea
           onChange={this.update("description")}
           className="task-description-detail"
-          value={this.state.description}
+          value={(this.state.description) ? this.state.description : ""}
           placeholder="Description"
         >
         </textarea>
       </div>
     );
   }
+
+  ////////// Sub Components -- Bottom //////////
 
   renderProjectSection() {
     return (
@@ -145,10 +173,8 @@ class TaskForm extends React.Component {
     } else {
       return (
         <div className="task-form-container">
-          <form onSubmit={this.handleSubmit} className="task-form-box">
-            <header>
+          <form className="task-form-box">
               {this.renderToolbar()}
-            </header>
 
             <div className="form-body">
               {this.renderNameInput()}
@@ -162,9 +188,6 @@ class TaskForm extends React.Component {
               {this.renderProjectSection()}
               {this.renderTaskStorySection()}
 
-              <div className="update-task-button-row">
-                <input type="submit" className="blue-button" value="Update Task"/>
-              </div>
             </div>
           </form>
         </div>

@@ -1,4 +1,9 @@
 class Api::UsersController < ApplicationController
+  def index 
+    @users = current_user.teams.first.members
+    render :index
+  end 
+
   def create
     @user = User.new(user_params)
     if @user.save

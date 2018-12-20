@@ -17,11 +17,8 @@ class ProjectPage extends React.Component {
 
   ////////// Lifecycle Methods //////////
   // shouldComponentUpdate(nextState, nextProps) {
-  //   if (this.props.tasks !== nextProps.tasks) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
+  //   debugger;
+  //   return true;
   // }
 
   ////////// Click Handlers //////////

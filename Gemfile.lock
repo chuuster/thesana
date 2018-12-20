@@ -217,6 +217,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   annotate
   bcrypt
   better_errors

@@ -8,14 +8,16 @@ const mapStateToProps = (state, ownProps) => {
     id: "",
     name: "",
     description: "",
-    creatorId: "",
-    assigneeId: "",
-    dueDate: ""
+    creator_id: "",
+    assignee_id: "",
+    due_date: null,
+    done: false
   };
 
   return {
     currentUser: state.entities.users[state.session.id],
-    task: state.entities.tasks[ownProps.match.params.taskId] || defaultTask
+    task: state.entities.tasks[ownProps.match.params.taskId] || defaultTask,
+    users: Object.values(state.entities.users)
   };
 };
 

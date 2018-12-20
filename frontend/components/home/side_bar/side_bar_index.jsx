@@ -56,9 +56,11 @@ class SideBarIndex extends React.Component {
     );
   }
 
-  // renderMemberIndexItem(member) {
-
-  // }
+  renderTeamMemberIndexItem(member) {
+    return (
+      <button className="user-circle-button">{member.initials}</button>
+    );
+  }
 
   ////////// Main Render //////////
 
@@ -73,10 +75,7 @@ class SideBarIndex extends React.Component {
             <span>Team Awesome</span>
             
             <div className="member-index">
-              <button className="user-circle-button">{this.props.currentUser.initials}</button>
-              <button className="user-circle-button">PD</button>
-              <button className="user-circle-button">MS</button>
-              <button className="user-circle-button">JP</button>
+              {this.props.users.map((user) => this.renderTeamMemberIndexItem(user))}
             </div>
 
             <div className="project-index">

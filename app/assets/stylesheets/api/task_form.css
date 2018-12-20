@@ -36,6 +36,20 @@
   fill: #222b37;
 }
 
+.completed {
+  background-color: #25e8c8;
+  border-color: #25e8c8;
+  color: white;
+  fill: white;
+}
+
+.completed:hover {
+  background-color: #00bf9c;
+  border-color: #00bf9c;
+  color: white;
+  fill: white;
+}
+
 .mark-complete-check-icon {
   height: 16px;
   width: 16px;
@@ -100,7 +114,7 @@
   width: 16px;
 }
 
-.assignee-button, .due-date-button {
+.assignee-button, .react-datepicker__input-container {
   font-size: 13px;
   background: #fff;
   border-color: #b7bfc6;
@@ -119,7 +133,7 @@
   margin-right: 50px;
 }
 
-.assignee-button:hover, .due-date-button:hover {
+.assignee-button:hover, .react-datepicker__input-container:hover {
   background-color: #f6f8f9;
   border-color: #646f79;
   border-style: solid;
@@ -129,7 +143,7 @@
 }
 
 .assignee-button:hover .dashed-circle-icon,
-.due-date-button:hover .dashed-circle-icon {
+.react-datepicker__input-container:hover .dashed-circle-icon {
   background-color: #f6f8f9;
   border-color: #646f79;
   border-style: solid;
@@ -214,4 +228,63 @@
 
 .task-story {
   margin: 15px 45px;
+}
+
+
+/* .due-date-button:hover .date-removal-button {
+  display: block;
+  line-height: 10px;
+} */
+
+/* .date-removal-button {
+  display: none;
+  height: 10px;
+  width: 10px;
+  fill: white;
+  border-radius: 50%;
+  background-color: #848f99;
+  padding: 2px;
+  margin: 0 -5px 0 10px;
+}
+
+.date-removal-button:hover {
+  background-color: #646f79;
+} */
+
+/* .react-datepicker__input-container {
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 18px;
+  min-width: 0;
+} */
+.due-date-button {
+  display: flex;
+  align-items: center;
+}
+
+.react-datepicker__input-container {
+  display: flex;
+  align-items: center;
+}
+
+.react-datepicker__close-icon {
+  position: relative;
+  display: none;
+}
+
+.react-datepicker__input-container:hover .react-datepicker__close-icon {
+  display: block;
+}
+
+.react-datepicker__close-icon::after {
+  background-color: #848f99;
+  right: -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-datepicker__close-icon:hover::after {
+  background-color: #646f79;
 }

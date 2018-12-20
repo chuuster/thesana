@@ -21,3 +21,9 @@ export const logout = () => {
   });
 };
 
+export const fetchTeamMembers = () => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/users"
+  });
+}

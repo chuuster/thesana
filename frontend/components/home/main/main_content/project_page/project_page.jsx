@@ -44,21 +44,6 @@ class ProjectPage extends React.Component {
     }
   }
 
-  // handleAssigneeSelect(userId) {
-  //   return (e) => {
-  //     this.setState({ assignee_id: userId }, () => this.props.updateTask(this.state));
-  //   }
-  // }
-
-  // handleAssigneeDropdown(htmlId, taskId) {
-  //   return (e) => {
-  //     e.preventDefault();
-  //     e.stopPropagation();
-  //     this.props.history.push(`/projects/${this.props.project.id}/${taskId}`);
-  //     handleDropdownClick(htmlId)();
-  //   }
-  // }
-
 
   ////////// Sub Components //////////
 
@@ -87,13 +72,14 @@ class ProjectPage extends React.Component {
     if (Number.isInteger(task.assignee_id)) {
       userIcon = <button className="user-circle-button">{this.props.users[task.assignee_id].initials}</button>
     } else {
-      userIcon =  (
-        <div className="dashed-circle-icon">
-          <svg viewBox="0 0 32 32">
-            <path d="M16,18c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8S20.4,18,16,18z M16,4c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S19.3,4,16,4z" />
-            <path d="M29,32c-0.6,0-1-0.4-1-1v-4.2c0-2.6-2.2-4.8-4.8-4.8H8.8C6.2,22,4,24.2,4,26.8V31c0,0.6-0.4,1-1,1s-1-0.4-1-1v-4.2C2,23,5,20,8.8,20h14.4c3.7,0,6.8,3,6.8,6.8V31C30,31.6,29.6,32,29,32z" />
-          </svg>
-        </div>
+      userIcon =  (<div></div>
+        // <div className="project-user-icon-placeholder"></div>
+        // <div className="dashed-circle-icon">
+        //   <svg viewBox="0 0 32 32">
+        //     <path d="M16,18c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8S20.4,18,16,18z M16,4c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S19.3,4,16,4z" />
+        //     <path d="M29,32c-0.6,0-1-0.4-1-1v-4.2c0-2.6-2.2-4.8-4.8-4.8H8.8C6.2,22,4,24.2,4,26.8V31c0,0.6-0.4,1-1,1s-1-0.4-1-1v-4.2C2,23,5,20,8.8,20h14.4c3.7,0,6.8,3,6.8,6.8V31C30,31.6,29.6,32,29,32z" />
+        //   </svg>
+        // </div>
       )
     }
 
@@ -120,7 +106,6 @@ class ProjectPage extends React.Component {
           </div>
           <div className="task-row-assignee-icon">
             {userIcon}
-            {/* {this.renderAssigneeDropdown()} */}
           </div>
         </div>
       </div>

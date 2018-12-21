@@ -28,6 +28,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     currentUser: state.entities.users[state.session.id],
+    users: state.entities.users,
     project,
     tasks
   };

@@ -87,34 +87,6 @@
   padding-bottom: 15px;
 }
 
-
-.dashed-circle-icon {
-  box-sizing: border-box;
-  color: #848f99;
-  fill: #848f99;
-  flex: 0 0 auto;
-  font-size: 13px;
-  height: 30px;
-  line-height: 1;
-  transition: 200ms box-shadow,200ms color,200ms background,200ms fill;
-  width: 30px;
-  background: #fff;
-  border: 1px solid #b7bfc6;
-  border-radius: 50%;
-  align-items: center;
-  border-style: dashed;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  margin-right: 10px;
-  transition: none;
-}
-
-.dashed-circle-icon svg {
-  height: 16px;
-  width: 16px;
-}
-
 .assignee-button, .react-datepicker__input-container {
   font-size: 13px;
   background: #fff;

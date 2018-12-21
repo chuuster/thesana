@@ -44,7 +44,7 @@
 }
 
 .task-index-row {
-  height: 34px;
+  max-height: 34px;
   align-items: center;
   display: flex;
   padding: 0 30px;
@@ -56,7 +56,9 @@
 
 .task-index-row:hover {
   cursor: pointer;
-  background: #f6f8f9;
+  background: linear-gradient(to right, #25e8c8 0%, #32c1ff 34%, #f6f8f9 65% );
+  background-size: 300% 100%;
+  background-position: right bottom;
   border-bottom: 1px solid #e0e6e8;
 }
 
@@ -97,10 +99,10 @@
   fill: #25e8c8;
 }
 
-.task-index-row textarea,
-.task-index-row textarea:focus,
-.task-index-row textarea:hover {
-  /* line-height: 14px; */
+.task-name-input,
+.task-name-input:focus,
+.task-name-input:hover {
+  background-color: transparent;
   color: #151b26;
   height: 16px;
   padding: 0px;
@@ -115,7 +117,117 @@
   cursor: pointer;
 }
 
+.task-name-input:focus {
+  cursor: text;
+}
+
 /* .success-toast {
   background-color: #25e8c8;
   background-image: linear-gradient(to right, #25e8c8, #32c1ff);
 } */
+
+.task-row-assignee-icon .dashed-circle-icon {
+  height: 24px;
+  width: 24px;
+  margin-right: 0;
+}
+
+.task-index-row-right {
+  position: relative;
+  border-bottom: 1px solid #e0e6e8;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-row-due-date {
+  color: #646f79;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.dashed-circle-icon {
+  box-sizing: border-box;
+  color: #848f99;
+  fill: #848f99;
+  flex: 0 0 auto;
+  font-size: 13px;
+  height: 30px;
+  line-height: 1;
+  transition: 200ms box-shadow,200ms color,200ms background,200ms fill;
+  width: 30px;
+  background: #fff;
+  border: 1px solid #b7bfc6;
+  border-radius: 50%;
+  align-items: center;
+  border-style: dashed;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin-right: 10px;
+  transition: none;
+}
+
+.dashed-circle-icon svg {
+  height: 16px;
+  width: 16px;
+}
+
+.task-index-row-right .dashed-circle-icon {
+  width: 24px;
+  height: 24px;
+  fill: transparent;
+  border-color: transparent;
+}
+
+.task-index-row:hover .dashed-circle-icon {
+  fill: #b7bfc6;
+  border-color: #b7bfc6;
+}
+
+.task-index-row:hover .task-index-row-left,
+.task-index-row:hover .task-index-row-right {
+  border-bottom: 1px solid transparent;
+}
+
+.success {
+  max-height: 0;
+  border: 0px;
+  overflow-y: hidden;
+  background: linear-gradient(to right, #25e8c8 0%, #32c1ff 34%, #f6f8f9 65% );
+  background-size: 300% 100%;
+  -webkit-animation: Success 0.6s ease-in-out;
+	-moz-animation: Success 0.6s ease-in-out;
+	animation: Success 0.6s ease-in-out;
+  -webkit-transition: max-height 0.5s ease-in-out 0.3s;
+  -moz-transition: max-height 0.5s ease-in-out 0.3s;
+  -o-transition: max-height 0.5s ease-in-out 0.3s;
+  transition: max-height 0.5s ease-in-out 0.3s;
+}
+
+.success .task-name-input {
+  color: white;
+}
+
+.success .mark-complete-check-button,
+.success .mark-complete-check-button:hover {
+  background: #fff;
+  border-color: #25e8c8;
+  fill: #25e8c8;
+}
+
+@-webkit-keyframes Success {
+  from { background-position: right bottom  }
+  to { background-position: left bottom }
+}
+
+@-moz-keyframes Success {
+  from { background-position: right bottom  }
+  to { background-position: left bottom }
+}
+
+@keyframes Success {
+  from { background-position: right bottom  }
+  to { background-position: left bottom }
+}

@@ -72,6 +72,11 @@
 .team-index-item span {
   display: block;
   min-height: 28px;
+  margin-left: 15px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #e0e6e8;
+  cursor: pointer;
 }
 
 .member-index .user-circle-button {
@@ -188,12 +193,4 @@
 
 .team-member-index-hover span {
   margin: 0 15px;
-}
-
-.team-index-item span {
-  margin-left: 15px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #e0e6e8;
-  cursor: pointer;
 }

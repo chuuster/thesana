@@ -189,3 +189,11 @@
 .team-member-index-hover span {
   margin: 0 15px;
 }
+
+.team-index-item span {
+  margin-left: 15px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #e0e6e8;
+  cursor: pointer;
+}

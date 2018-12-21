@@ -124,6 +124,14 @@
 .task-name-input:focus {
   cursor: text;
 }
+/* 
+.task-row-assignee-icon .user-circle-button {
+  background: #b7bfc6;
+}
+
+.task-row-assignee-icon .user-circle-button:hover {
+  background: #848f99;
+} */
 
 .task-row-assignee-icon .dashed-circle-icon {
   height: 24px;

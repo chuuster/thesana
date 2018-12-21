@@ -1,24 +1,8 @@
-# README
+![thesana logo](https://raw.githubusercontent.com/chuuster/thesana/master/app/assets/images/logo_black_full.png "Thesana Logo")
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Thesana 
 
-Things you may want to cover:
+Thesana, an Asana clone, is a web application designed to help teams organize, track, and manage their work. Teams members can create projects and tasks. Each task can be assigned to a team member, have a due date, and be marked complete or incomplete. 
 
-* Ruby version
+[Thesana Live Demo](https://thesana.herokuapp.com/#/)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

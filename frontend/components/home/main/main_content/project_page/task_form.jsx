@@ -9,6 +9,7 @@ class TaskForm extends React.Component {
     this.state = this.props.task;
     this.handleTaskClose = this.handleTaskClose.bind(this);
     this.handleDueDate = this.handleDueDate.bind(this);
+    this.handleDeleteTask = this.handleDeleteTask.bind(this);
     this.handleAssigneeRemove = this.handleAssigneeRemove.bind(this);
   }
 
@@ -24,6 +25,11 @@ class TaskForm extends React.Component {
     this.setState({ due_date: date }, () => this.props.updateTask(this.state));
   }
 
+  handleDeleteTask(e) {
+    this.props.deleteTask(this.state.id)
+      .then(this.handleTaskClose);
+  }
+
   handleTaskClose() {
     this.props.history.push(`/projects/${this.props.match.params.projectId}`);
   }
@@ -34,7 +40,7 @@ class TaskForm extends React.Component {
     }
   }
 
-  handleAssigneeDropdown(id) {
+  handleDropdown(id) {
     return (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -59,6 +65,8 @@ class TaskForm extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.task.id !== this.props.task.id) {
       this.setState(this.props.task)
+    } else if (prevProps.task.name !== this.props.task.name) {
+      this.setState({name: this.props.task.name});
     }
   }
 
@@ -70,7 +78,7 @@ class TaskForm extends React.Component {
         placeholder="Write a task name"
         className="task-name-detail-input"
         onChange={this.update("name")}
-        value={this.state.name}>
+        value={this.state.name || ""}>
       </textarea>
     );
   }
@@ -93,13 +101,32 @@ class TaskForm extends React.Component {
     );
   }
 
+  renderToolbarDropdown() {
+    return (
+      <ul id="task-toolbar-dropdown" className="dropdown-content-task-toolbar">
+        <li className="task-toolbar-dropdown-item" onClick={this.handleDeleteTask}>
+          <div className="remove-task-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 486.4 486.4"><path d="M446 70H344.8V53.5c0-29.5-24-53.5-53.5-53.5h-96.2c-29.5 0-53.5 24-53.5 53.5V70H40.4c-7.5 0-13.5 6-13.5 13.5S32.9 97 40.4 97h24.4v317.2c0 39.8 32.4 72.2 72.2 72.2h212.4c39.8 0 72.2-32.4 72.2-72.2V97H446c7.5 0 13.5-6 13.5-13.5S453.5 70 446 70zM168.6 53.5c0-14.6 11.9-26.5 26.5-26.5h96.2c14.6 0 26.5 11.9 26.5 26.5V70H168.6V53.5zM394.6 414.2c0 24.9-20.3 45.2-45.2 45.2H137c-24.9 0-45.2-20.3-45.2-45.2V97h302.9v317.2H394.6z" /><path d="M243.2 411c7.5 0 13.5-6 13.5-13.5V158.9c0-7.5-6-13.5-13.5-13.5s-13.5 6-13.5 13.5v238.5C229.7 404.9 235.7 411 243.2 411z" /><path d="M155.1 396.1c7.5 0 13.5-6 13.5-13.5V173.7c0-7.5-6-13.5-13.5-13.5s-13.5 6-13.5 13.5v208.9C141.6 390.1 147.7 396.1 155.1 396.1z" /><path d="M331.3 396.1c7.5 0 13.5-6 13.5-13.5V173.7c0-7.5-6-13.5-13.5-13.5s-13.5 6-13.5 13.5v208.9C317.8 390.1 323.8 396.1 331.3 396.1z" /></svg>
+          </div>
+          <span>Delete Task</span>
+        </li>
+      </ul>
+    );
+  }
+
   renderToolbar() {
     return (
       <header>
         <div className="task-form-toolbar">
           {(this.props.task.done) ? this.renderCompleted() : this.renderMarkComplete()}
-          <div onClick={this.handleTaskClose} className="close-x">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.1 31.1"><polygon points="31.1 1.4 29.7 0 15.6 14.1 1.4 0 0 1.4 14.1 15.6 0 29.7 1.4 31.1 15.6 17 29.7 31.1 31.1 29.7 17 15.6 " /></svg>
+          <div className="task-toolbar-right">
+            <div id="task-toolbar-more-button" className="task-toolbar-button" onClick={this.handleDropdown("task-toolbar-dropdown")}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="612" height="612" viewBox="0 0 612 612"><path d="M55.6 250.4C24.9 250.4 0 275.3 0 306c0 30.7 24.9 55.6 55.6 55.6S111.3 336.7 111.3 306C111.3 275.3 86.4 250.4 55.6 250.4zM315.3 250.4c-30.7 0-55.6 24.9-55.6 55.6 0 30.7 24.9 55.6 55.6 55.6 30.7 0 55.6-24.9 55.6-55.6C370.9 275.3 346 250.4 315.3 250.4zM556.4 250.4c-30.7 0-55.6 24.9-55.6 55.6 0 30.7 24.9 55.6 55.6 55.6C587.1 361.6 612 336.7 612 306 612 275.3 587.1 250.4 556.4 250.4z" /></svg>
+            </div>
+            {this.renderToolbarDropdown()}
+            <div onClick={this.handleTaskClose} className="close-x">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.1 31.1"><polygon points="31.1 1.4 29.7 0 15.6 14.1 1.4 0 0 1.4 14.1 15.6 0 29.7 1.4 31.1 15.6 17 29.7 31.1 31.1 29.7 17 15.6 " /></svg>
+            </div>
           </div>
         </div>
       </header>
@@ -180,7 +207,7 @@ class TaskForm extends React.Component {
 
     return (      
       <div className='assignee-section'>
-        <div className="assignee-button" onClick={this.handleAssigneeDropdown("assignee-dropdown")}>
+        <div className="assignee-button" onClick={this.handleDropdown("assignee-dropdown")}>
           {userIcon}
           {assigneeInfo}
           {removeAssigneeButton}

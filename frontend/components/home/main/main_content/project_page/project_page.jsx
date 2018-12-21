@@ -11,23 +11,19 @@ class ProjectPage extends React.Component {
     this.renderTaskRow = this.renderTaskRow.bind(this);
     this.handleFormAreaClick = this.handleFormAreaClick.bind(this);
     this.handleAddTask = this.handleAddTask.bind(this);
-    if (props.match.params.taskId && Object.values(props.tasks).length > 1) {
-      this.state = props.tasks[props.match.params.taskId];
-    } else {
-      console.log("no");
-    }
+    this.state = {name: ''};
   }
 
   ////////// Lifecycle Methods //////////
 
   ////////// Click Handlers //////////
 
-  update(field) {
+  update(field, id) {
     return (e) => {
-      this.setState({ [field]: e.currentTarget.value }, () => this.props.updateTask(this.state));
+      const task = { name: e.currentTarget.value, id: id }
+      this.setState({ [field]: e.currentTarget.value }, () => this.props.updateTask(task));
     };
   }
-
 
   handleFormAreaClick(taskId) {
     return (e) => {
@@ -36,7 +32,15 @@ class ProjectPage extends React.Component {
   }
 
   handleAddTask(e) {
-    this.props.createTask({project_id: this.props.project.id, done: false});
+    this.props.createTask({project_id: this.props.project.id, done: false}).then((res) => this.props.fetchProject(this.props.project.id));
+  }
+
+  handleCompleteTask(id) {
+    return (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.props.updateTask({id: id, done: true});
+    }
   }
 
   ////////// Sub Components //////////
@@ -46,14 +50,13 @@ class ProjectPage extends React.Component {
       <div key={task.id} onClick={this.handleFormAreaClick(task.id)} className="task-index-row">
         <div className="task-index-row-left">
           <form>
-            <div className="mark-complete-check-button">
+            <div onClick={this.handleCompleteTask(task.id)} className="mark-complete-check-button">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
             </div>
             <textarea 
-              // onChange={this.update("name")}  
+              onChange={this.update("name", task.id)}  
               className="task-name-textarea" 
-              // value={(this.state && task.id === this.props.match.params.taskId) ? this.state.name : "not state" }
-              value={task.name}>
+              value={(task.name) ? task.name : ""}>
             </textarea>
           </form>
         </div>
@@ -73,10 +76,9 @@ class ProjectPage extends React.Component {
           </div>
 
           <div className="task-index-content">
-            {Object.values(this.props.tasks).map(task => this.renderTaskRow(task))}
+            {this.props.tasks.map(task => this.renderTaskRow(task))}
           </div>
         </div>
-        {/* {(this.props.match.params.taskId) ? <TaskFormContainer /> : ""} */}
         <ProtectedRoute exact path="/projects/:projectId/:taskId" component={EditTaskFormContainer}/>
       </div>
     );

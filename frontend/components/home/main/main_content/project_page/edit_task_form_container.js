@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import TaskForm from "./task_form";
 import { updateTask, fetchTask, deleteTask } from "../../../../../actions/task_actions";
+import { fetchProject } from "../../../../../actions/project_actions";
 
 const mapStateToProps = (state, ownProps) => {
   const defaultTask = {
@@ -30,6 +31,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchProject: (id) => dispatch(fetchProject(id)),
     fetchTask: (id) => dispatch(fetchTask(id)),
     updateTask: (task) => dispatch(updateTask(task)),
     deleteTask: (id) => dispatch(deleteTask(id))

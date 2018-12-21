@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import ProjectPage from "./project_page";
 import { updateTask, createTask, fetchTasks } from "../../../../../actions/task_actions";
+import { fetchProject } from "../../../../../actions/project_actions";
 
 const mapStateToProps = (state, ownProps) => {
   let project;
@@ -14,10 +15,15 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   if (Object.keys(state.entities.tasks).length !== 0 && Object.keys(project).length !== 0) {
-    tasks = {};
-    project.taskIds.map(taskId => tasks[taskId] = state.entities.tasks[taskId]);
+    tasks = []
+
+    project.taskIds.sort().forEach(id => {
+      if (state.entities.tasks[id]){
+        tasks.push(state.entities.tasks[id]);
+      }
+    });
   } else {
-    tasks = {};
+    tasks = [];
   }
 
   return {
@@ -29,6 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchProject: (id) => dispatch(fetchProject(id)),
     fetchTasks: () => dispatch(fetchTasks()),
     createTask: (task) => dispatch(createTask(task)),
     updateTask: (task) => dispatch(updateTask(task))

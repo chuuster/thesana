@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   if (Object.keys(state.entities.tasks).length !== 0 && Object.keys(project).length !== 0) {
-    tasks = []
+    tasks = [];
 
     project.taskIds.sort().forEach(id => {
       if (state.entities.tasks[id]){

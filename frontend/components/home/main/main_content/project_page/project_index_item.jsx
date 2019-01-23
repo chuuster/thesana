@@ -6,6 +6,15 @@ export default class ProjectIndexItem extends React.Component {
     super(props);
   } 
   
+  // shouldComponentUpdate(nextProps) {
+  //   if (this.props.task === nextProps.task) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
+
+  //// Click Handlers 
+
   handleFormAreaClick(taskId) {
     return (e) => {
       this.props.history.push(`/projects/${this.props.project.id}/${taskId}`);
@@ -19,12 +28,23 @@ export default class ProjectIndexItem extends React.Component {
     };
   }
 
+  toggleDone(id, value) {
+    return (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.props.updateTask({ id: id, done: value });
+    }
+  }
+
+  /////// Main Rende r
+
   render() {
+    console.log("rendered");
     let checkClass, userIcon, dueDate, rowClass;
     { (this.props.task.done) ? checkClass = "mark-complete-check-button completed" : checkClass = "mark-complete-check-button" }
 
     if (Number.isInteger(this.props.task.assignee_id)) {
-      userIcon = <button className="user-circle-button">{this.props.users[task.assignee_id].initials}</button>
+      userIcon = <button className="user-circle-button">{this.props.users[this.props.task.assignee_id].initials}</button>
     } else {
       userIcon = (<div></div>
         // <div className="project-user-icon-placeholder"></div>
@@ -43,8 +63,8 @@ export default class ProjectIndexItem extends React.Component {
     return (
       <div onClick={this.handleFormAreaClick(this.props.task.id)} className={rowClass}>
         <div className="task-index-row-left">
-          <form>
-            <div onClick={this.toggleDone(this.props.task.id, !task.done)} className={checkClass}>
+          {/* <form>
+            <div onClick={this.toggleDone(this.props.task.id, !this.props.task.done)} className={checkClass}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
             </div>
             <input
@@ -52,6 +72,12 @@ export default class ProjectIndexItem extends React.Component {
               onChange={this.update("name", this.props.task.id)}
               className="task-name-input"
               value={(this.props.task.name) ? this.props.task.name : ""} />
+          </form> */}
+          <form>
+            <div onClick={this.toggleDone(this.props.task.id, !this.props.task.done)} className={checkClass}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
+            </div>
+            <span className="task-name-input">{this.props.task.name}</span>
           </form>
         </div>
         <div className="task-index-row-right">

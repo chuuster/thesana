@@ -52,6 +52,7 @@ class ProjectPage extends React.Component {
             {this.props.tasks.map(task => 
               <ProjectIndexItem 
                 task={task}
+                key={task.id}
                 project={this.props.project} 
                 updateTask={this.props.updateTask}
                 users={this.props.users} 

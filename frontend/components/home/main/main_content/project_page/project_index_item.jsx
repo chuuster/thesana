@@ -6,14 +6,18 @@ export default class ProjectIndexItem extends React.Component {
     super(props);
   } 
   
-  // shouldComponentUpdate(nextProps) {
-  //   if (this.props.task === nextProps.task) {
-  //     return false;
-  //   }
-  //   return true;
-  // }
+  shouldComponentUpdate(nextProps) {
+    if (this.props.task.name === nextProps.task.name &&
+      this.props.task.assignee_id === nextProps.task.assignee_id && 
+      this.props.task.due_date === nextProps.task.due_date && 
+      this.props.task.done === nextProps.task.done) {
+      return false;
+    }
 
-  //// Click Handlers 
+    return true;
+  }
+
+  // Click Handlers 
 
   handleFormAreaClick(taskId) {
     return (e) => {
@@ -36,7 +40,7 @@ export default class ProjectIndexItem extends React.Component {
     }
   }
 
-  /////// Main Rende r
+  /////// Main Render
 
   render() {
     console.log("rendered");

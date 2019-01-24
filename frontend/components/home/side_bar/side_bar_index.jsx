@@ -89,8 +89,8 @@ class SideBarIndex extends React.Component {
   renderTeamMemberIndexItem(member) {
     if (member !== null) {
       return (
-        <div className="team-member-index-item">
-          <button key={member.id} className="user-circle-button">{member.initials}
+        <div key={member.id} className="team-member-index-item">
+          <button className="user-circle-button">{member.initials}
             <div className="team-member-index-hover">
               <span>{`${member.fname} ${member.lname}`}</span>
             </div>

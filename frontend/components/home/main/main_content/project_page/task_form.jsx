@@ -2,6 +2,8 @@ import React from 'react';
 import DatePicker from "react-datepicker";
 import DatePickerInput from "./datepicker.jsx";
 import UserPicker from "./userpicker";
+import debounce from "lodash/debounce";
+import throttle from "lodash/throttle";
 
 class TaskForm extends React.Component {
   constructor(props) {
@@ -11,14 +13,17 @@ class TaskForm extends React.Component {
     this.handleDueDate = this.handleDueDate.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
     this.handleAssigneeRemove = this.handleAssigneeRemove.bind(this);
+    this.debouncedUpdateTask = debounce(() => { this.props.updateTask(this.state); console.log(this.state); }, 500);
   }
 
   ////////// Click/Input Handlers //////////
 
   update(field) {
     return (e) => {
-      this.setState({ [field]: e.currentTarget.value }, () => this.props.updateTask(this.state));
-    }
+      this.setState({ [field]: e.currentTarget.value }, 
+        this.debouncedUpdateTask
+      );
+    };
   }
 
   handleDueDate(date) {

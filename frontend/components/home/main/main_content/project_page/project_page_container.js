@@ -19,9 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 
     project.taskIds.sort().forEach(id => {
       if (state.entities.tasks[id]){
-
-          tasks.push(state.entities.tasks[id]);
-
+        tasks.push(state.entities.tasks[id]);
       }
     });
   } else {

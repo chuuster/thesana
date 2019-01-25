@@ -9,6 +9,7 @@ class DeleteProjectForm extends React.Component {
   handleSubmit(id) {
     return (e) => {
       e.preventDefault();
+      this.props.history.push("/");
       this.props.processForm(id).then(() => this.props.closeModal());
     };
   }

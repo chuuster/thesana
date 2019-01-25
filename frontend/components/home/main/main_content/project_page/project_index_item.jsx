@@ -36,6 +36,7 @@ export default class ProjectIndexItem extends React.Component {
     return (e) => {
       e.preventDefault();
       e.stopPropagation();
+      // document.querySelector(`[task="${id}"]`).classList.toggle("success");
       this.props.updateTask({ id: id, done: value });
     }
   }
@@ -44,7 +45,7 @@ export default class ProjectIndexItem extends React.Component {
 
   render() {
     let checkClass, userIcon, dueDate, rowClass;
-    { (this.props.task.done) ? checkClass = "mark-complete-check-button completed" : checkClass = "mark-complete-check-button" }
+    { (this.props.task.done) ? checkClass = "mark-complete-check-button faded-check" : checkClass = "mark-complete-check-button" }
 
     if (Number.isInteger(this.props.task.assignee_id) && Object.keys(this.props.users).length > 1) {
       userIcon = <button className="user-circle-button">{this.props.users[this.props.task.assignee_id].initials}</button>
@@ -61,10 +62,10 @@ export default class ProjectIndexItem extends React.Component {
     }
 
     (!!this.props.task.due_date) ? dueDate = moment(this.props.task.due_date).format("MMM D") : dueDate = "";
-    (!!this.props.task.done) ? rowClass = "task-index-row success" : rowClass = "task-index-row";
+    (!!this.props.task.done) ? rowClass = "task-index-row completed-task task-hide" : rowClass = "task-index-row incomplete-task";
 
     return (
-      <div onClick={this.handleFormAreaClick(this.props.task.id)} className={rowClass}>
+      <div task={this.props.task.id} onClick={this.handleFormAreaClick(this.props.task.id)} className={rowClass}>
         <div className="task-index-row-left">
           {/* <form>
             <div onClick={this.toggleDone(this.props.task.id, !this.props.task.done)} className={checkClass}>

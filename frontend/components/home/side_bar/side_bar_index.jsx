@@ -54,7 +54,7 @@ class SideBarIndex extends React.Component {
         <div className="side-bar-reports">
           <div className="side-bar-report-header">Reports</div>
           <div className="side-bar-report-link">Tasks I've Created</div>
-          <div className="side-bar-report-link">Tasks I've Assigned To Others</div>
+          <div className="side-bar-report-link">Tasks Assigned To Me</div>
           <div className="side-bar-report-link">Recently Completed Tasks</div>
         </div>
       </>

@@ -1,3 +1,5 @@
+
+
 .project-page-container {
   display: flex;
   justify-content: center;
@@ -248,4 +250,25 @@
 @keyframes Success {
   from { background-position: right bottom  }
   to { background-position: left bottom }
+}
+
+.faded-check {
+  background: #b2ebe1;
+  border-color: #b2ebe1;
+  fill: white;
+}
+
+.faded-check:hover {
+  background: #00bf9c;
+  border-color: #00bf9c;
+  fill: white;
+}
+
+.completed-task .task-name-input {
+  color: rgb(169, 169, 169);
+}
+
+.completed-task.task-hide,
+.incomplete-task.task-hide {
+  display: none;
 }

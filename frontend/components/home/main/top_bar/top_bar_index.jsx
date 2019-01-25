@@ -12,6 +12,21 @@ class TopBarIndex extends React.Component {
 
   //////////   Lifecycle Methods //////////
   
+  handleIncompleteDisplay() {
+    Array.from(document.getElementsByClassName("incomplete-task")).forEach((el) => { el.classList.remove("task-hide"); });
+    Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.add("task-hide"); });
+  }
+
+  handleCompleteDisplay() {
+    Array.from(document.getElementsByClassName("incomplete-task")).forEach((el) => { el.classList.add("task-hide"); });
+    Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("task-hide"); });
+  }
+  
+  handleAllDisplay() {
+    Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("task-hide"); });
+    Array.from(document.getElementsByClassName("incomplete-task")).forEach((el) => { el.classList.remove("task-hide"); });
+  }
+  
   //////////   Dropdown Sections //////////  
 
   newButtonDropdown() {
@@ -71,9 +86,9 @@ class TopBarIndex extends React.Component {
             <span>{this.props.project.name}</span>
           </div>
           <div className="top-bar-tabs">      
-              <div className="top-bar-tab-item">Incomplete Tasks</div>
-              <div className="top-bar-tab-item">Completed Tasks</div>
-              <div className="top-bar-tab-item">All Tasks</div>
+            <div className="top-bar-tab-item" onClick={this.handleIncompleteDisplay} >Incomplete Tasks</div>
+            <div className="top-bar-tab-item" onClick={this.handleCompleteDisplay} >Completed Tasks</div>
+            <div className="top-bar-tab-item" onClick={this.handleAllDisplay} >All Tasks</div>
           </div>
         </div>
       </div>

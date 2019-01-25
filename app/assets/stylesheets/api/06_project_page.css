@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   background: #F6F8F9;
-  min-height: calc(100vh - 70px); 
+  min-height: calc(100vh - 71px); 
   overflow: hidden;
 }
 

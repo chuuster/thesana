@@ -221,14 +221,28 @@
   width: 214px;
   position: absolute;
   bottom: 0px;
-  display: flex;
-  justify-content: center;
-  padding: 15px;
+  padding: 0px 15px;
 }
 
 .contact-link-item svg {
   width: 35px;
   height: 35px;
   fill: #d5dce0;
-  margin: 10px;
+  margin: 15px 10px;
+}
+
+#side-bar-contacts {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid darkgray;
+}
+
+#side-bar-credits {
+  font-size: 12px;
+  padding: 15px;
+  color: darkgray;
+}
+
+#side-bar-credits a {
+  text-decoration: underline;
 }

@@ -46,7 +46,7 @@ export default class ProjectIndexItem extends React.Component {
     let checkClass, userIcon, dueDate, rowClass;
     { (this.props.task.done) ? checkClass = "mark-complete-check-button completed" : checkClass = "mark-complete-check-button" }
 
-    if (Number.isInteger(this.props.task.assignee_id)) {
+    if (Number.isInteger(this.props.task.assignee_id) && Object.keys(this.props.users).length !== 0) {
       userIcon = <button className="user-circle-button">{this.props.users[this.props.task.assignee_id].initials}</button>
     } else {
       userIcon = (<div></div>

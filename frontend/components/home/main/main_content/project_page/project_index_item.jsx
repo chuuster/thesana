@@ -7,7 +7,8 @@ export default class ProjectIndexItem extends React.Component {
   } 
   
   shouldComponentUpdate(nextProps) {
-    if (this.props.task.name === nextProps.task.name &&
+    if (document.querySelector(`[task="${this.props.task.id}"]`).classList.contains("success") ||
+      this.props.task.name === nextProps.task.name &&
       this.props.task.assignee_id === nextProps.task.assignee_id && 
       this.props.task.due_date === nextProps.task.due_date && 
       this.props.task.done === nextProps.task.done) {
@@ -36,9 +37,19 @@ export default class ProjectIndexItem extends React.Component {
     return (e) => {
       e.preventDefault();
       e.stopPropagation();
-      // document.querySelector(`[task="${id}"]`).classList.toggle("success");
+      const taskRow = document.querySelector(`[task="${id}"]`);
+      if (taskRow.classList.contains("incomplete-task")) {
+        taskRow.classList.add("success");
+        taskRow.classList.remove("incomplete-task");
+        taskRow.classList.add("completed-task");
+        document.querySelector(`[checkid="${id}"]`).classList.add("faded-check");
+      } else {
+        document.querySelector(`[checkid="${id}"]`).classList.remove("faded-check");
+        taskRow.classList.remove("completed-task");
+        taskRow.classList.add("incomplete-task");
+      }
       this.props.updateTask({ id: id, done: value });
-    }
+    };
   }
 
   /////// Main Render
@@ -78,7 +89,7 @@ export default class ProjectIndexItem extends React.Component {
               value={(this.props.task.name) ? this.props.task.name : ""} />
           </form> */}
           <form>
-            <div onClick={this.toggleDone(this.props.task.id, !this.props.task.done)} className={checkClass}>
+            <div onClick={this.toggleDone(this.props.task.id, !this.props.task.done)} checkid={this.props.task.id} className={checkClass}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
             </div>
             <span className="task-name-input">{this.props.task.name}</span>

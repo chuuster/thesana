@@ -58,6 +58,7 @@ class ProjectPage extends React.Component {
                 users={this.props.users} 
                 history={this.props.history}/>)}
           </div>
+          <footer id="task-index-footer"></footer>
         </div>
         <ProtectedRoute exact path="/projects/:projectId/:taskId" component={EditTaskFormContainer}/>
       </div>

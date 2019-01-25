@@ -4,19 +4,19 @@
   display: flex;
   justify-content: center;
   background: #F6F8F9;
-  min-height: calc(100vh - 71px); 
-  overflow: hidden;
+  height: calc(100vh - 71px); 
 }
 
 .task-index-container {
   position: relative;
-  min-height: 100%;
+  height: calc(100% - 30px);
   width: 80%;
   min-width: 405px;
-  margin: 15px 15px 15px 15px;
+  margin: 15px;
   background: white;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
   font-size: 13px;
+  overflow: auto;
 }
 
 .task-index-header {
@@ -215,7 +215,7 @@
   transition: max-height 0.3s ease-in-out 0.4s;
 }
 
-.success .task-name-input {
+.completed-task.success .task-name-input {
   color: white;
 }
 
@@ -271,4 +271,8 @@
 .completed-task.task-hide,
 .incomplete-task.task-hide {
   display: none;
+}
+
+#task-index-footer {
+  height: 15px;
 }

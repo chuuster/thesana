@@ -19,10 +19,12 @@ class TopBarIndex extends React.Component {
 
   handleCompleteDisplay() {
     Array.from(document.getElementsByClassName("incomplete-task")).forEach((el) => { el.classList.add("task-hide"); });
+    Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("success"); });
     Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("task-hide"); });
   }
   
   handleAllDisplay() {
+    Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("success"); });
     Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("task-hide"); });
     Array.from(document.getElementsByClassName("incomplete-task")).forEach((el) => { el.classList.remove("task-hide"); });
   }
@@ -107,13 +109,13 @@ class TopBarIndex extends React.Component {
 
           <div className="top-bar-right">
             
-            <div className="dropdown">
+            {/* <div className="dropdown">
               <button onClick={handleDropdownClick("newDropdown")} className="top-bar-gradient-button">+ New</button>
               {this.newButtonDropdown()}
             </div>
 
             <button className="top-bar-question-button">?</button>
-            <button className="top-bar-upgrade-button">Upgrade</button>
+            <button className="top-bar-upgrade-button">Upgrade</button> */}
             
             <div className="dropdown">
               <button onClick={handleDropdownClick("userDropdown")} className="user-circle-button">{this.props.currentUser.initials}</button>

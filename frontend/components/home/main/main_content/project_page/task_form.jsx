@@ -15,10 +15,6 @@ class TaskForm extends React.Component {
     this.debouncedUpdateTask = debounce(() => { this.props.updateTask(this.state)}, 500);
   }
 
-  shouldComponentUpdate() {
-    console.log("updatecalled")
-    return true;
-  }
   ////////// Click/Input Handlers //////////
 
   update(field) {
@@ -265,7 +261,6 @@ class TaskForm extends React.Component {
   ////////// Main Render //////////
 
   render() {
-    console.log("renderform")
     if (this.props.task.id === "") {
       return null;
     } else {

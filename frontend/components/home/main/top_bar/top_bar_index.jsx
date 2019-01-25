@@ -70,13 +70,10 @@ class TopBarIndex extends React.Component {
           <div className="top-bar-project-interaction">
             <span>{this.props.project.name}</span>
           </div>
-          <div className="top-bar-tabs">
-            <div className="top-bar-tab-item">Incomplete Tasks</div>
-            <div className="top-bar-tab-item">Completed Tasks</div>
-            <div className="top-bar-tab-item">All Tasks</div>
-            {/* <div className="top-bar-tab-item">Conversations</div>
-            <div className="top-bar-tab-item">Progress</div>
-            <div className="top-bar-tab-item">Files</div> */}
+          <div className="top-bar-tabs">      
+              <div className="top-bar-tab-item">Incomplete Tasks</div>
+              <div className="top-bar-tab-item">Completed Tasks</div>
+              <div className="top-bar-tab-item">All Tasks</div>
           </div>
         </div>
       </div>

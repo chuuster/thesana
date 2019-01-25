@@ -32,7 +32,6 @@ class ProjectForm extends React.Component {
 
   handleModalClose(e) {
     e.preventDefault();
-    console.log(this.props);
     this.props.closeModal();
     this.props.clearErrors();
   }

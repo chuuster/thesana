@@ -43,7 +43,6 @@ export default class ProjectIndexItem extends React.Component {
   /////// Main Render
 
   render() {
-    console.log("rendered");
     let checkClass, userIcon, dueDate, rowClass;
     { (this.props.task.done) ? checkClass = "mark-complete-check-button completed" : checkClass = "mark-complete-check-button" }
 

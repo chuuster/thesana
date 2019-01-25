@@ -112,7 +112,7 @@ class SideBarIndex extends React.Component {
           <a className="contact-link-item" href="https://www.linkedin.com/in/christinachu7/">
             <svg xmlns="http://www.w3.org/2000/svg" width="430" height="430" viewBox="0 0 430.1 430.1"><path d="M398.4 0H31.8C14.2 0 0 13.8 0 30.8v368.5c0 17 14.2 30.8 31.8 30.8h366.6c17.5 0 31.8-13.8 31.8-30.8V30.8C430.1 13.8 415.9 0 398.4 0zM130.4 360H65.4V165.8H130.4V360zM97.9 139.3h-0.4c-21.8 0-35.9-14.9-35.9-33.6 0-19 14.5-33.5 36.8-33.5 22.2 0 35.9 14.5 36.3 33.5C134.7 124.4 120.6 139.3 97.9 139.3zM364.7 360h-65V256.1c0-26.1-9.4-43.9-32.9-43.9 -18 0-28.6 12-33.3 23.6 -1.7 4.1-2.2 9.9-2.2 15.7v108.5h-65c0 0 0.9-176 0-194.2h65v27.5c8.6-13.2 24-32.1 58.5-32.1 42.8 0 74.8 27.7 74.8 87.4V360zM230.9 194c0.1-0.2 0.3-0.4 0.4-0.6v0.6H230.9z" /></svg>
           </a>
-          <a className="contact-link-item" href="https:/ccchu.me">
+          <a className="contact-link-item" href="https://ccchu.me">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M469.3 106.7H362.7V85.3c0-23.5-19.1-42.7-42.7-42.7H192c-23.5 0-42.7 19.1-42.7 42.7v21.3H42.7C19.1 106.7 0 125.8 0 149.3v64C0 236.9 19.1 256 42.7 256h170.7v-10.7c0-5.9 4.8-10.7 10.7-10.7h64c5.9 0 10.7 4.8 10.7 10.7V256h170.7C492.9 256 512 236.9 512 213.3v-64C512 125.8 492.9 106.7 469.3 106.7zM320 106.7H192V85.3h128V106.7z" /><path d="M506.1 267.5c-3.6-1.8-8-1.4-11.2 1.1 -7.6 5.7-16.4 8.8-25.6 8.8H298.7v32c0 5.9-4.8 10.7-10.7 10.7h-64c-5.9 0-10.7-4.8-10.7-10.7v-32H42.7c-9.1 0-18-3-25.6-8.8 -3.2-2.5-7.6-2.9-11.2-1.1C2.3 269.3 0 273 0 277.1v149.6c0 23.5 19.1 42.7 42.7 42.7h426.7c23.5 0 42.7-19.1 42.7-42.7V277.1C512 273 509.7 269.3 506.1 267.5z" /></svg>
           </a>
         </section>
@@ -123,7 +123,8 @@ class SideBarIndex extends React.Component {
             <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com. </a>
             Thesana is a clone of 
             <a href="https://www.asana.com/" title="Asana"> Asana</a>
-            , meant only as a demonstration project.
+            , meant only as a demonstration project of 
+            <a href="https://ccchu.me/"> Christina Chu</a>.
           </div>
         </section>
       </footer>

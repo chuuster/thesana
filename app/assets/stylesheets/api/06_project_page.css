@@ -2,16 +2,16 @@
   display: flex;
   justify-content: center;
   background: #F6F8F9;
-  min-height: 100vh; 
+  min-height: calc(100vh - 70px); 
   overflow: hidden;
 }
 
 .task-index-container {
   position: relative;
-  min-height: 100vh;
+  min-height: 100%;
   width: 80%;
   min-width: 405px;
-  margin: 15px 15px 0 15px;
+  margin: 15px 15px 15px 15px;
   background: white;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
   font-size: 13px;

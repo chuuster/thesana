@@ -37,7 +37,8 @@ class SideBarIndex extends React.Component {
             <span className="side-bar-link-text">Home</span>
           </Link>
           <div className="side-bar-link-container">
-            <img src={window.myTasksIconURL} className="side-bar-icon" />
+            {/* <img src={window.myTasksIconURL} className="side-bar-icon" /> */}
+            <svg className="mark-complete-check-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
             <span className="side-bar-link-text">My Tasks</span>
           </div>
           {/* <div className="side-bar-link-container">

@@ -33,12 +33,13 @@ class SideBarIndex extends React.Component {
         </div>
         <section className="side-links-section">
           <Link to="/home" className="side-bar-link-container">
-            <img src={window.homeIconURL} className="side-bar-icon" />
+            <svg id="side-bar-home-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M506.6 208.1L263.9 30.4c-4.7-3.4-11-3.4-15.7 0L5.4 208.1c-5.9 4.3-7.2 12.7-2.9 18.6s12.7 7.2 18.6 2.9L256 57.6l234.8 171.9c2.4 1.7 5.1 2.6 7.8 2.6 4.1 0 8.1-1.9 10.7-5.4C513.8 220.7 512.5 212.4 506.6 208.1z" /><path d="M442.2 232.5c-7.3 0-13.3 6-13.3 13.3v211.7H322.5V342c0-36.7-29.8-66.5-66.5-66.5s-66.5 29.8-66.5 66.5v115.6H83.1V245.8c0-7.3-6-13.3-13.3-13.3s-13.3 6-13.3 13.3v225.1c0 7.3 6 13.3 13.3 13.3h133c7 0 12.7-5.4 13.3-12.3 0-0.3 0.1-0.7 0.1-1v-128.9c0-22 17.9-39.9 39.9-39.9s39.9 17.9 39.9 39.9v128.9c0 0.4 0 0.7 0.1 1 0.5 6.9 6.3 12.3 13.3 12.3h133c7.3 0 13.3-6 13.3-13.3V245.8C455.5 238.5 449.6 232.5 442.2 232.5z" /></svg>
             <span className="side-bar-link-text">Home</span>
           </Link>
           <div className="side-bar-link-container">
-            {/* <img src={window.myTasksIconURL} className="side-bar-icon" /> */}
-            <svg className="mark-complete-check-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
+            <div id="side-bar-check-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
+            </div>
             <span className="side-bar-link-text">My Tasks</span>
           </div>
           {/* <div className="side-bar-link-container">

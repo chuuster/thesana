@@ -35,10 +35,31 @@
 }
 
 
-.side-bar-icon {
+#side-bar-home-icon {
+  fill: #d5dce0;
   height: 20px;
+  width: 20px;
   margin-right: 10px;
 }
+
+#side-bar-check-icon {
+  fill: #d5dce0;
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #d5dce0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#side-bar-check-icon svg {
+  height: 12px;
+  width: 12px;
+}
+
+
 
 .side-bar-link-text {
   color: #D4DBDF;

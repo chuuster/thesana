@@ -11,9 +11,6 @@ class TopBarIndex extends React.Component {
   }
 
   //////////   Lifecycle Methods //////////
-  // shouldComponentUpdate() {
-    
-  // }
   
   //////////   Dropdown Sections //////////  
 
@@ -74,12 +71,12 @@ class TopBarIndex extends React.Component {
             <span>{this.props.project.name}</span>
           </div>
           <div className="top-bar-tabs">
-            <div className="top-bar-tab-item">List</div>
-            <div className="top-bar-tab-item">Timeline</div>
-            <div className="top-bar-tab-item">Calendar</div>
-            <div className="top-bar-tab-item">Conversations</div>
+            <div className="top-bar-tab-item">Incomplete Tasks</div>
+            <div className="top-bar-tab-item">Completed Tasks</div>
+            <div className="top-bar-tab-item">All Tasks</div>
+            {/* <div className="top-bar-tab-item">Conversations</div>
             <div className="top-bar-tab-item">Progress</div>
-            <div className="top-bar-tab-item">Files</div>
+            <div className="top-bar-tab-item">Files</div> */}
           </div>
         </div>
       </div>

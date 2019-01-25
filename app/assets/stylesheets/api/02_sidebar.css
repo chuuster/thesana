@@ -3,6 +3,7 @@
   min-height: 100vh;
   background-color: #151b26;
   color: white;
+  position: relative;
 };
 
 .side-bar-container header {
@@ -193,4 +194,20 @@
 
 .team-member-index-hover span {
   margin: 0 15px;
+}
+
+.side-bar-container footer {
+  width: 214px;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.contact-link-item svg {
+  width: 35px;
+  height: 35px;
+  fill: #d5dce0;
+  margin: 10px;
 }

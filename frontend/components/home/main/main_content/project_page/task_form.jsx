@@ -3,7 +3,6 @@ import DatePicker from "react-datepicker";
 import DatePickerInput from "./datepicker.jsx";
 import UserPicker from "./userpicker";
 import debounce from "lodash/debounce";
-import throttle from "lodash/throttle";
 
 class TaskForm extends React.Component {
   constructor(props) {
@@ -13,9 +12,13 @@ class TaskForm extends React.Component {
     this.handleDueDate = this.handleDueDate.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
     this.handleAssigneeRemove = this.handleAssigneeRemove.bind(this);
-    this.debouncedUpdateTask = debounce(() => { this.props.updateTask(this.state); console.log(this.state); }, 500);
+    this.debouncedUpdateTask = debounce(() => { this.props.updateTask(this.state)}, 500);
   }
 
+  shouldComponentUpdate() {
+    console.log("updatecalled")
+    return true;
+  }
   ////////// Click/Input Handlers //////////
 
   update(field) {
@@ -262,6 +265,7 @@ class TaskForm extends React.Component {
   ////////// Main Render //////////
 
   render() {
+    console.log("renderform")
     if (this.props.task.id === "") {
       return null;
     } else {

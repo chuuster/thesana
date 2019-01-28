@@ -37,7 +37,7 @@ To counter this, I implemented a _debounce function_ so that the API call would 
 
 This solves the problem of unnecessary API calls when the user edits a task. 
 
-Another challenge was to handle clicks on elements that overlap with other elements, such as the project options dropdown on the home page. To counter that issue, I used `stopPropogation` to stop the event from propogating to parent containers: 
+Another challenge was to handle clicks on elements that overlap with other elements, such as the project options dropdown on the home page. When clicked, the intention is for the dropdown to appear. Instead, it took users to the actual project page, as if they had clicked on the project icon instead (which is the parent element of the dropdown icon). To counter this issue, I used `stopPropogation` to stop the event from propogating to parent containers: 
 
 ```javascript 
   handleProjectOptionsClick(projectString) {

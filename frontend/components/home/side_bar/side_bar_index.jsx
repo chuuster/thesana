@@ -120,8 +120,8 @@ class SideBarIndex extends React.Component {
           <div>Credits: Icons are made by 
             <a href="https://www.freepik.com/" title="Freepik"> Freepik </a> 
             from 
-            <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com. </a>
-            Thesana is a clone of 
+            <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+            . Thesana is a clone of 
             <a href="https://www.asana.com/" title="Asana"> Asana</a>
             , meant only as a demonstration project of 
             <a href="https://ccchu.me/"> Christina Chu</a>.

@@ -49,6 +49,8 @@ Another challenge was to handle clicks on elements that overlap with other eleme
   }
 ```
 
+![overlapping dropdown demo](./readme-images/dropdown.gif)
+
 # Going Forward 
 
 Future features to implement include concurrent displays of task information in the projects page and implementation of multiple teams. 

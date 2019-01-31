@@ -116,6 +116,15 @@
   cursor: pointer;
 }
 
+.blue-button.demo-button {
+  padding: 0px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0px;
+  font-size: 14px;
+}
+
 .session-form-button-section {
   display: flex;
   flex-direction: column;

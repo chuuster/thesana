@@ -80,7 +80,7 @@ class SessionForm extends React.Component {
         <div className="session-form-button-section">
           <input type="submit" className="blue-button" value={this.props.formType} />
           <br /> <span>or</span> <br />
-          {(this.props.formType === "Log In") ? <button onClick={this.demoUserLogin} className="blue-button">Log In As Demo User</button> : ""}
+          {(this.props.formType === "Log In") ? <div onClick={this.demoUserLogin} className="blue-button demo-button">Log In As Demo User</div> : ""}
         </div>
       );
     } else {

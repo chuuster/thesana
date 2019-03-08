@@ -15,16 +15,18 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   if (Object.keys(state.entities.tasks).length !== 0 && Object.keys(project).length !== 0) {
-    tasks = [];
+    tasks = {};
 
     project.taskIds.sort().forEach(id => {
       if (state.entities.tasks[id]){
-        tasks.push(state.entities.tasks[id]);
+        tasks[id] = state.entities.tasks[id];
+        // tasks.push(state.entities.tasks[id]);
       }
     });
   } else {
-    tasks = [];
+    tasks = {};
   }
+  console.log('container');
 
   return {
     currentUser: state.entities.users[state.session.id],

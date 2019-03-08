@@ -9,7 +9,6 @@ class ProjectPage extends React.Component {
   constructor(props) {
     super(props);
     this.handleAddTask = this.handleAddTask.bind(this);
-    this.state = {name: ''};
   }
 
   ////////// Click Handlers //////////
@@ -49,10 +48,10 @@ class ProjectPage extends React.Component {
           </div>
 
           <div className="task-index-content">
-            {this.props.tasks.map(task => 
+            {Object.keys(this.props.tasks).map(id => 
               <ProjectIndexItem 
-                task={task}
-                key={task.id}
+                task={this.props.tasks[id]}
+                key={id}
                 project={this.props.project} 
                 updateTask={this.props.updateTask}
                 users={this.props.users} 

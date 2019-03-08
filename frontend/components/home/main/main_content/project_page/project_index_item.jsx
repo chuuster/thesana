@@ -1,21 +1,40 @@
 import moment from 'moment';
 import React from 'react';
+import debounce from "lodash/debounce";
+
 
 export default class ProjectIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = this.props.task;
+    this.debouncedUpdateTask = debounce(() => { this.props.updateTask(this.state) }, 500);
   } 
   
-  shouldComponentUpdate(nextProps) {
-    if (document.querySelector(`[task="${this.props.task.id}"]`).classList.contains("success") ||
-      this.props.task.name === nextProps.task.name &&
-      this.props.task.assignee_id === nextProps.task.assignee_id && 
-      this.props.task.due_date === nextProps.task.due_date && 
-      this.props.task.done === nextProps.task.done) {
-      return false;
-    }
+  // shouldComponentUpdate(nextProps) {
+  //   console.log("next", nextProps.task);
+  //   console.log("this", this.props.task);
+  //   if (document.querySelector(`[task="${this.props.task.id}"]`).classList.contains("success") ||
+  //     this.props.task.name === nextProps.task.name &&
+  //     this.props.task.assignee_id === nextProps.task.assignee_id && 
+  //     this.props.task.due_date === nextProps.task.due_date && 
+  //     this.props.task.done === nextProps.task.done) {
+  //     return false;
+  //   }
 
-    return true;
+  //   return true;
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.task !== this.props.task) this.setState(this.props.task);
+  }
+
+  update(field) {
+    return (e) => {
+      e.preventDefault;
+      this.setState({ [field]: e.currentTarget.value },
+        this.debouncedUpdateTask
+      );
+    };
   }
 
   // Click Handlers 
@@ -26,12 +45,12 @@ export default class ProjectIndexItem extends React.Component {
     };
   }
 
-  update(field, id) {
-    return (e) => {
-      const task = { name: e.currentTarget.value, id: id }
-      this.setState({ [field]: e.currentTarget.value }, () => this.props.updateTask(task));
-    };
-  }
+  // update(field, id) {
+  //   return (e) => {
+  //     const task = { name: e.currentTarget.value, id: id }
+  //     this.setState({ [field]: e.currentTarget.value }, () => this.props.updateTask(task));
+  //   };
+  // }
 
   toggleDone(id, value) {
     return (e) => {
@@ -48,6 +67,7 @@ export default class ProjectIndexItem extends React.Component {
         taskRow.classList.remove("completed-task");
         taskRow.classList.add("incomplete-task");
       }
+
       this.props.updateTask({ id: id, done: value });
     };
   }
@@ -56,10 +76,10 @@ export default class ProjectIndexItem extends React.Component {
 
   render() {
     let checkClass, userIcon, dueDate, rowClass;
-    { (this.props.task.done) ? checkClass = "mark-complete-check-button faded-check" : checkClass = "mark-complete-check-button" }
+    { (this.state.done) ? checkClass = "mark-complete-check-button faded-check" : checkClass = "mark-complete-check-button" }
 
-    if (Number.isInteger(this.props.task.assignee_id) && Object.keys(this.props.users).length > 1) {
-      userIcon = <button className="user-circle-button">{this.props.users[this.props.task.assignee_id].initials}</button>
+    if (Number.isInteger(this.state.assignee_id) && Object.keys(this.props.users).length > 1) {
+      userIcon = <button className="user-circle-button">{this.props.users[this.state.assignee_id].initials}</button>
     } else {
       userIcon = (<div></div>
         // <div className="project-user-icon-placeholder"></div>
@@ -72,28 +92,29 @@ export default class ProjectIndexItem extends React.Component {
       )
     }
 
-    (!!this.props.task.due_date) ? dueDate = moment(this.props.task.due_date).format("MMM D") : dueDate = "";
-    (!!this.props.task.done) ? rowClass = "task-index-row completed-task task-hide" : rowClass = "task-index-row incomplete-task";
+    (!!this.state.due_date) ? dueDate = moment(this.state.due_date).format("MMM D") : dueDate = "";
+    (!!this.state.done) ? rowClass = "task-index-row completed-task task-hide" : rowClass = "task-index-row incomplete-task";
 
     return (
-      <div task={this.props.task.id} onClick={this.handleFormAreaClick(this.props.task.id)} className={rowClass}>
+      <div task={this.state.id} onClick={this.handleFormAreaClick(this.state.id)} className={rowClass}>
         <div className="task-index-row-left">
-          {/* <form>
-            <div onClick={this.toggleDone(this.props.task.id, !this.props.task.done)} className={checkClass}>
+          <form>
+            <div onClick={this.toggleDone(this.state.id, !this.state.done)} checkid={this.state.id} className={checkClass}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
             </div>
             <input
               type="text"
-              onChange={this.update("name", this.props.task.id)}
+              onChange={this.update("name")}
               className="task-name-input"
-              value={(this.props.task.name) ? this.props.task.name : ""} />
-          </form> */}
-          <form>
-            <div onClick={this.toggleDone(this.props.task.id, !this.props.task.done)} checkid={this.props.task.id} className={checkClass}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
-            </div>
-            <span className="task-name-input">{this.props.task.name}</span>
+              value={this.state.name || ""} 
+            />
           </form>
+          {/* <form>
+            <div obind, !this.state.done)} checkid={this.state.id} className={checkClass}>
+              <svgbindx="0 0 512 512"><path d="M504.5 75.5c-10-10-26.2-10-36.2 0L161.6 382.2 43.7 264.3c-10-10-26.2-10-36.2 0 -10 10-10 26.2 0 36.2l136 136c10 10 26.2 10 36.2 0L504.5 111.7C514.5 101.7 514.5 85.5 504.5 75.5z" /></svg>
+            </div>bind
+            <span className="task-name-input">{this.state.name}</span>
+          </form> */}
         </div>
         <div className="task-index-row-right">
           <div className="task-row-due-date">

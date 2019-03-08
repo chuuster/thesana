@@ -10,19 +10,19 @@ export default class ProjectIndexItem extends React.Component {
     this.debouncedUpdateTask = debounce(() => { this.props.updateTask(this.state) }, 500);
   } 
   
-  // shouldComponentUpdate(nextProps) {
-  //   console.log("next", nextProps.task);
-  //   console.log("this", this.props.task);
-  //   if (document.querySelector(`[task="${this.props.task.id}"]`).classList.contains("success") ||
-  //     this.props.task.name === nextProps.task.name &&
-  //     this.props.task.assignee_id === nextProps.task.assignee_id && 
-  //     this.props.task.due_date === nextProps.task.due_date && 
-  //     this.props.task.done === nextProps.task.done) {
-  //     return false;
-  //   }
+  shouldComponentUpdate(nextProps) {
+    console.log("next", nextProps.task);
+    console.log("this", this.props.task);
+    if (document.querySelector(`[task="${this.props.task.id}"]`).classList.contains("success")) { 
+      // this.props.task.name === nextProps.task.name &&
+      // this.props.task.assignee_id === nextProps.task.assignee_id && 
+      // this.props.task.due_date === nextProps.task.due_date && 
+      // this.props.task.done === nextProps.task.done) {
+      return false;
+    }
 
-  //   return true;
-  // }
+    return true;
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.task !== this.props.task) this.setState(this.props.task);
@@ -55,13 +55,19 @@ export default class ProjectIndexItem extends React.Component {
   toggleDone(id, value) {
     return (e) => {
       e.preventDefault();
-      e.stopPropagation();
+      // e.stopPropagation();
+
       const taskRow = document.querySelector(`[task="${id}"]`);
+      
       if (taskRow.classList.contains("incomplete-task")) {
         taskRow.classList.add("success");
         taskRow.classList.remove("incomplete-task");
         taskRow.classList.add("completed-task");
         document.querySelector(`[checkid="${id}"]`).classList.add("faded-check");
+        setTimeout(() => {
+          taskRow.classList.remove("success");
+          taskRow.classList.add("task-hide");
+        }, 900);
       } else {
         document.querySelector(`[checkid="${id}"]`).classList.remove("faded-check");
         taskRow.classList.remove("completed-task");

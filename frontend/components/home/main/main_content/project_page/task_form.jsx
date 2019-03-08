@@ -67,10 +67,10 @@ class TaskForm extends React.Component {
   ////////// Lifecycle Methods //////////
 
   componentDidUpdate(prevProps) {
-    if (prevProps.task.id !== this.props.task.id) {
+    if (prevProps.task !== this.props.task) {
       this.setState(this.props.task)
-    } else if (prevProps.task.name !== this.props.task.name) {
-      this.setState({name: this.props.task.name});
+    // } else if (prevProps.task.name !== this.props.task.name) {
+    //   this.setState({name: this.props.task.name});
     }
   }
 
@@ -122,7 +122,7 @@ class TaskForm extends React.Component {
     return (
       <header>
         <div className="task-form-toolbar">
-          {(this.props.task.done) ? this.renderCompleted() : this.renderMarkComplete()}
+          {(this.state.done) ? this.renderCompleted() : this.renderMarkComplete()}
           <div className="task-toolbar-right">
             <div id="task-toolbar-more-button" className="task-toolbar-button" onClick={this.handleDropdown("task-toolbar-dropdown")}>
               <svg xmlns="http://www.w3.org/2000/svg" width="612" height="612" viewBox="0 0 612 612"><path d="M55.6 250.4C24.9 250.4 0 275.3 0 306c0 30.7 24.9 55.6 55.6 55.6S111.3 336.7 111.3 306C111.3 275.3 86.4 250.4 55.6 250.4zM315.3 250.4c-30.7 0-55.6 24.9-55.6 55.6 0 30.7 24.9 55.6 55.6 55.6 30.7 0 55.6-24.9 55.6-55.6C370.9 275.3 346 250.4 315.3 250.4zM556.4 250.4c-30.7 0-55.6 24.9-55.6 55.6 0 30.7 24.9 55.6 55.6 55.6C587.1 361.6 612 336.7 612 306 612 275.3 587.1 250.4 556.4 250.4z" /></svg>

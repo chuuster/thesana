@@ -1,6 +1,4 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import merge from 'lodash/merge';
 import { ProtectedRoute } from "../../../../../util/route_util";
 import EditTaskFormContainer from "./edit_task_form_container";
 import ProjectIndexItem from './project_index_item'; 
@@ -8,6 +6,7 @@ import ProjectIndexItem from './project_index_item';
 class ProjectPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = this.props.tasks;
     this.handleAddTask = this.handleAddTask.bind(this);
   }
 

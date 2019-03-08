@@ -202,7 +202,7 @@
 
 .success {
   max-height: 0;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   overflow-y: hidden;
   background: linear-gradient(to right, #25e8c8 0%, #32c1ff 34%, #f6f8f9 65% );
   background-size: 300% 100%;

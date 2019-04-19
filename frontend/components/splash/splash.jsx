@@ -36,7 +36,7 @@ class Splash extends React.Component {
               </Link>
             </div>
             <div className="splash-top-bar-link-container">
-              <Link to="/signup"> 
+              <Link to="/login"> 
                 <button className="splash-try-button"><span>Try for free</span></button>
               </Link>
             </div>

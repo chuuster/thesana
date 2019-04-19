@@ -186,7 +186,7 @@
   border-bottom: 2px solid white;
 }
 
-.top-bar-tab-item:hover {
+.top-bar-tab-item:hover, .active-tab {
   color: #151b26;
   border-bottom: 2px solid lightgrey;
   cursor: pointer;

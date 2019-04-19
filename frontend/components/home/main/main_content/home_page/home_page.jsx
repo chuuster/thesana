@@ -23,7 +23,7 @@ class HomePage extends React.Component {
     return (e) => {
       e.preventDefault();
       this.props.openModal(purpose, projectId)();
-    }
+    };
   }
 
 

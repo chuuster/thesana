@@ -9,24 +9,31 @@ class TopBarIndex extends React.Component {
     this.renderProjectView = this.renderProjectView.bind(this);
     this.renderTopBarLeft = this.renderTopBarLeft.bind(this);
   }
-
-  //////////   Lifecycle Methods //////////
   
   handleIncompleteDisplay() {
     Array.from(document.getElementsByClassName("incomplete-task")).forEach((el) => { el.classList.remove("task-hide"); });
     Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.add("task-hide"); });
+    document.getElementById("top-bar-incomplete").classList.add("active-tab"); 
+    document.getElementById("top-bar-complete").classList.remove("active-tab"); 
+    document.getElementById("top-bar-all").classList.remove("active-tab"); 
   }
-
+  
   handleCompleteDisplay() {
     Array.from(document.getElementsByClassName("incomplete-task")).forEach((el) => { el.classList.add("task-hide"); });
     Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("success"); });
     Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("task-hide"); });
+    document.getElementById("top-bar-complete").classList.add("active-tab"); 
+    document.getElementById("top-bar-incomplete").classList.remove("active-tab");
+    document.getElementById("top-bar-all").classList.remove("active-tab"); 
   }
   
   handleAllDisplay() {
     Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("success"); });
     Array.from(document.getElementsByClassName("completed-task")).forEach((el) => { el.classList.remove("task-hide"); });
     Array.from(document.getElementsByClassName("incomplete-task")).forEach((el) => { el.classList.remove("task-hide"); });
+    document.getElementById("top-bar-all").classList.add("active-tab"); 
+    document.getElementById("top-bar-complete").classList.remove("active-tab");
+    document.getElementById("top-bar-incomplete").classList.remove("active-tab"); 
   }
   
   //////////   Dropdown Sections //////////  
@@ -88,9 +95,9 @@ class TopBarIndex extends React.Component {
             <span>{this.props.project.name}</span>
           </div>
           <div className="top-bar-tabs">      
-            <div className="top-bar-tab-item" onClick={this.handleIncompleteDisplay} >Incomplete Tasks</div>
-            <div className="top-bar-tab-item" onClick={this.handleCompleteDisplay} >Completed Tasks</div>
-            <div className="top-bar-tab-item" onClick={this.handleAllDisplay} >All Tasks</div>
+            <div className="top-bar-tab-item" id="top-bar-incomplete" onClick={this.handleIncompleteDisplay} >Incomplete Tasks</div>
+            <div className="top-bar-tab-item" id="top-bar-complete" onClick={this.handleCompleteDisplay} >Completed Tasks</div>
+            <div className="top-bar-tab-item" id="top-bar-all" onClick={this.handleAllDisplay} >All Tasks</div>
           </div>
         </div>
       </div>

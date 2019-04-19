@@ -24,6 +24,16 @@ export default class ProjectIndexItem extends React.Component {
   //   return true;
   // }
 
+  shouldComponentUpdate(nextProps) {
+    console.log("next", nextProps.task);
+    console.log("this", this.props.task);
+    if (document.querySelector(`[task="${this.props.task.id}"]`).classList.contains("success")) {
+      return false;
+    }
+
+    return true; 
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.task !== this.props.task) this.setState(this.props.task);
   }
@@ -58,10 +68,11 @@ export default class ProjectIndexItem extends React.Component {
       e.stopPropagation();
       const taskRow = document.querySelector(`[task="${id}"]`);
       if (taskRow.classList.contains("incomplete-task")) {
-        taskRow.classList.add("success");
         taskRow.classList.remove("incomplete-task");
+        taskRow.classList.add("success");
         taskRow.classList.add("completed-task");
         document.querySelector(`[checkid="${id}"]`).classList.add("faded-check");
+        setTimeout(() => { taskRow.classList.add("success"); }, 2000);
       } else {
         document.querySelector(`[checkid="${id}"]`).classList.remove("faded-check");
         taskRow.classList.remove("completed-task");

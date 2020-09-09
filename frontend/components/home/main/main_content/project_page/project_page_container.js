@@ -1,7 +1,11 @@
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import ProjectPage from "./project_page";
-import { updateTask, createTask, fetchTasks } from "../../../../../actions/task_actions";
+import {
+  updateTask,
+  createTask,
+  fetchTasks,
+} from "../../../../../actions/task_actions";
 import { fetchProject } from "../../../../../actions/project_actions";
 
 const mapStateToProps = (state, ownProps) => {
@@ -9,16 +13,19 @@ const mapStateToProps = (state, ownProps) => {
   let tasks;
 
   if (Object.keys(state.entities.projects).length !== 0) {
-    project = state.entities.projects[ownProps.match.params.projectId]
+    project = state.entities.projects[ownProps.match.params.projectId];
   } else {
     project = {};
   }
 
-  if (Object.keys(state.entities.tasks).length !== 0 && Object.keys(project).length !== 0) {
+  if (
+    Object.keys(state.entities.tasks).length !== 0 &&
+    Object.keys(project).length !== 0
+  ) {
     tasks = {};
 
-    project.taskIds.sort().forEach(id => {
-      if (state.entities.tasks[id]){
+    project.taskIds.sort().forEach((id) => {
+      if (state.entities.tasks[id]) {
         tasks[id] = state.entities.tasks[id];
         // tasks.push(state.entities.tasks[id]);
       }
@@ -26,13 +33,12 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     tasks = {};
   }
-  console.log('container');
 
   return {
     currentUser: state.entities.users[state.session.id],
     users: state.entities.users,
     project,
-    tasks
+    tasks,
   };
 };
 
@@ -41,9 +47,10 @@ const mapDispatchToProps = (dispatch) => {
     fetchProject: (id) => dispatch(fetchProject(id)),
     fetchTasks: () => dispatch(fetchTasks()),
     createTask: (task) => dispatch(createTask(task)),
-    updateTask: (task) => dispatch(updateTask(task))
+    updateTask: (task) => dispatch(updateTask(task)),
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectPage));
-
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ProjectPage)
+);
